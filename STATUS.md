@@ -27,12 +27,16 @@ A personalized PWA for Dan's sister Nikki's Chicago visit. Based from **Glen Ell
 | Google Places enrichment | ✅ | Auto-fetches photos, star ratings, phone numbers |
 | Favorites (localStorage) | ✅ | Heart button on cards + sheet, persists across sessions |
 | Directions + Google Maps links | ✅ | On cards + sheet |
-| Haversine distance sorting | ✅ | Uses device GPS, shows distance in miles |
+| Haversine distance sorting | �� | Uses device GPS, shows distance in miles |
+| Share a trail | ✅ | Hash-based URLs (#trail=, #place=, #plan=), Web Share API + clipboard fallback |
+| Day Planner tab | ✅ | 4th tab: add places, drag reorder, route optimize, multi-stop Google Maps directions |
+| Share a place | ✅ | Share button on bottom sheet + shareable deep link |
+| Share a plan | ✅ | Shareable URL encodes all plan stops as slugs |
 | PWA manifest | ✅ | Add-to-homescreen capable |
 | GitHub Pages deployment | ✅ | Auto-deploys via Actions, Mapbox token injected from secret |
 
 ### Tech Stack
-- **Frontend:** Single-file HTML/CSS/JS PWA (~1100 lines)
+- **Frontend:** Single-file HTML/CSS/JS PWA (~1500 lines)
 - **Map:** Mapbox GL JS v3.3.0, dark-v11 style
 - **Data:** Static JSON (`chicago_data.json`, 74 places)
 - **Google Places:** New API (v1) for enrichment (photos, ratings, phone)

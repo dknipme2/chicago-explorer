@@ -89,6 +89,47 @@
 - Mapbox token injected from `MAPBOX_TOKEN` repo secret during build
 - Google Places API key is inline (split string to avoid scanners)
 
+---
+
+## Session 2: Share Trail + Day Planner (2026-04-03)
+
+### What Was Added
+
+**Share Trail (hash-based deep linking)**
+- URL hash routing: `#trail=dumpling-universe`, `#place=kasama`, `#plan=slug1,slug2,slug3`
+- `slugify()` converts place names to URL-safe slugs
+- `handleHash()` parses hash on load + `hashchange` events
+- Deep links skip the welcome screen automatically
+- Web Share API with clipboard fallback (`shareLink()`)
+- Share buttons on: trail cards (↗), trail header bar, bottom sheet, and plan
+- Toast notification system (`showToast()`) for feedback
+
+**Day Planner tab (4th tab)**
+- `planItems[]` persisted in localStorage key `chicago_plan`
+- Plan picker: searchable bottom sheet with filter chips (All/Favorites/Restaurant/Activity)
+- Drag-to-reorder on desktop (HTML5 Drag API), up/down arrow buttons on mobile (`@media (hover:none) and (pointer:coarse)`)
+- Route optimization: nearest-neighbor TSP greedy algorithm using `haversine()`, starts from `userLatLng` or Glen Ellyn (41.8778, -88.0678)
+- Stats bar: stop count, total miles, estimated driving minutes (~25mph city average)
+- Google Maps multi-stop directions URL with origin/destination/waypoints
+- "Add to Plan" button on card actions and bottom sheet
+- Share plan via `#plan=slug1,slug2,...` hash URL
+
+**Data updates**
+- Enhanced Demera Ethiopian with sensory-experience framing, coffee ceremony, added `trust-the-chef` trail
+- McDonald's Global Menu and Game Show Battle Rooms were already in data (added in session 1)
+- Total: 74 places
+
+### New localStorage Keys
+- `chicago_plan` — JSON array of place name strings (day planner)
+- `chicago_favs` — (existing, unchanged)
+- `chicago_welcomed` — (existing, unchanged)
+
+### Research Findings
+- **The Handsome podcast**: No Chicago food/location connections — not added
+- **McDonald's Global Menu**: Rotates ~quarterly, 6 international items, 1035 W Randolph at HQ
+- **Game Show Battle Rooms**: Lombard, 5 min from Glen Ellyn, book ahead weekends
+- **Ethiopian dining**: Dan noted Nikki responds to sensory/communal experience — enhanced Demera entry
+
 ## Git Log
 ```
 bf1bf2b Add ? button in header to revisit welcome screen

@@ -416,6 +416,142 @@ body{display:flex;flex-direction:column;position:relative}
 
 /* Bottom safe area */
 .safe-bottom{height:env(safe-area-inset-bottom,0px);background:var(--bg);flex-shrink:0}
+
+/* Toast */
+#toast{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);
+  padding:10px 20px;border-radius:20px;background:var(--surface-3);
+  border:1px solid var(--border);color:var(--text);font-size:12px;font-weight:600;
+  opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:300;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Trail share button */
+.trail-share-btn{
+  position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;
+  background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.2);
+  color:var(--blue);font-size:13px;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:all .2s;z-index:2;
+}
+.trail-share-btn:active{transform:scale(1.2);background:rgba(96,165,250,0.2)}
+.trail-header .trail-share-btn{position:static;width:28px;height:28px;font-size:12px;margin-left:auto;flex-shrink:0}
+
+/* Plan tab */
+.plan-view{padding:12px 16px 100px}
+.plan-header-bar{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.plan-header-bar h3{font-size:16px;font-weight:700;margin-right:auto}
+.plan-btn{
+  padding:7px 14px;border-radius:20px;font-size:11px;font-weight:600;
+  border:1px solid var(--border);cursor:pointer;transition:all .2s;
+  font-family:inherit;white-space:nowrap;
+}
+.plan-btn.primary{background:rgba(251,146,60,0.15);border-color:rgba(251,146,60,0.3);color:var(--orange)}
+.plan-btn.primary:active{background:rgba(251,146,60,0.25)}
+.plan-btn.secondary{background:var(--surface-1);color:var(--text2)}
+.plan-btn.secondary:active{background:var(--surface-2)}
+.plan-btn.danger{background:rgba(248,113,113,0.1);border-color:rgba(248,113,113,0.2);color:var(--red)}
+
+.plan-stats{
+  display:flex;gap:12px;padding:10px 14px;border-radius:12px;margin-bottom:12px;
+  background:var(--surface-glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--border);font-size:12px;color:var(--text2);font-weight:600;
+}
+.plan-stats .stat-val{color:var(--orange);margin-right:4px}
+
+.plan-item{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:8px;
+  background:var(--surface-glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  transition:all .2s;position:relative;
+}
+.plan-item.dragging{opacity:0.4;transform:scale(0.97)}
+.plan-item.drag-over{border-color:var(--orange);border-style:dashed}
+.plan-item-num{
+  width:24px;height:24px;border-radius:50%;background:rgba(251,146,60,0.15);
+  color:var(--orange);font-size:11px;font-weight:700;display:flex;
+  align-items:center;justify-content:center;flex-shrink:0;
+}
+.plan-item-icon{font-size:18px;flex-shrink:0}
+.plan-item-info{flex:1;min-width:0}
+.plan-item-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plan-item-meta{font-size:10px;color:var(--text3);margin-top:2px}
+.plan-item-leg{font-size:10px;color:var(--orange);font-weight:600}
+.plan-drag-handle{
+  cursor:grab;font-size:14px;color:var(--text3);padding:4px;user-select:none;
+  flex-shrink:0;
+}
+.plan-drag-handle:active{cursor:grabbing}
+.plan-move-btns{display:none;flex-direction:column;gap:2px;flex-shrink:0}
+.plan-move-btn{
+  width:24px;height:20px;border:1px solid var(--border);border-radius:4px;
+  background:var(--surface-1);color:var(--text3);font-size:10px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.plan-move-btn:active{background:var(--surface-2);color:var(--text)}
+.plan-item-remove{
+  width:24px;height:24px;border-radius:50%;background:rgba(248,113,113,0.1);
+  border:1px solid rgba(248,113,113,0.2);color:var(--red);font-size:12px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.plan-item-remove:active{background:rgba(248,113,113,0.2)}
+
+@media(hover:none) and (pointer:coarse){
+  .plan-drag-handle{display:none}
+  .plan-move-btns{display:flex}
+}
+
+.plan-empty{
+  text-align:center;padding:40px 20px;color:var(--text3);
+}
+.plan-empty-icon{font-size:48px;margin-bottom:12px}
+.plan-empty-title{font-size:16px;font-weight:700;color:var(--text2);margin-bottom:6px}
+.plan-empty-desc{font-size:12px;line-height:1.5}
+
+.plan-bottom-actions{
+  display:flex;gap:8px;padding:12px 0;border-top:1px solid var(--border-subtle);margin-top:8px;
+}
+.plan-bottom-actions .plan-btn{flex:1;text-align:center;padding:10px 8px}
+
+/* Plan picker overlay */
+.picker-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:199;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.picker-overlay.open{opacity:1;pointer-events:auto}
+.plan-picker{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:var(--surface-1);border-radius:20px 20px 0 0;
+  max-height:80vh;display:flex;flex-direction:column;
+  transform:translateY(100%);transition:transform .35s cubic-bezier(0.4,0,0.2,1);
+}
+.plan-picker.open{transform:translateY(0)}
+.picker-header{padding:12px 16px 8px;flex-shrink:0}
+.picker-title{font-size:14px;font-weight:700;margin-bottom:10px}
+.picker-search{
+  width:100%;padding:8px 14px;border-radius:20px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text);font-size:13px;font-family:inherit;
+  outline:none;
+}
+.picker-search:focus{border-color:var(--blue)}
+.picker-filters{display:flex;gap:6px;padding:8px 16px;overflow-x:auto;scrollbar-width:none;flex-shrink:0}
+.picker-filters::-webkit-scrollbar{display:none}
+.picker-list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px 16px 20px}
+.picker-item{
+  display:flex;align-items:center;gap:10px;padding:10px 0;
+  border-bottom:1px solid var(--border-subtle);cursor:pointer;
+}
+.picker-item:active{opacity:0.7}
+.picker-item-icon{font-size:18px;flex-shrink:0}
+.picker-item-info{flex:1;min-width:0}
+.picker-item-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.picker-item-meta{font-size:10px;color:var(--text3);margin-top:2px}
+.picker-item-toggle{
+  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;transition:all .2s;
+}
+.picker-item-toggle.added{background:rgba(52,211,153,0.15);color:var(--green)}
+.picker-item-toggle.not-added{background:rgba(96,165,250,0.1);color:var(--blue)}
 </style>
 </head>
 <body>
@@ -439,7 +575,7 @@ body{display:flex;flex-direction:column;position:relative}
       <div class="how-item">🏠 <strong>Based from Glen Ellyn</strong> — spots on the route to the city are marked</div>
     </div>
     <button class="welcome-btn" onclick="dismissWelcome()">Let's Explore! →</button>
-    <div class="welcome-footer">70+ curated spots across 12 theme trails</div>
+    <div class="welcome-footer">74 curated spots across 12 theme trails</div>
   </div>
 </div>
 
@@ -459,6 +595,7 @@ body{display:flex;flex-direction:column;position:relative}
   <button class="tab-btn active" data-tab="list" onclick="switchTab('list')">📋 Discover</button>
   <button class="tab-btn" data-tab="trails" onclick="switchTab('trails')">🥟 Trails</button>
   <button class="tab-btn" data-tab="map" onclick="switchTab('map')">🗺️ Map</button>
+  <button class="tab-btn" data-tab="plan" onclick="switchTab('plan')">📝 Plan</button>
 </div>
 
 <div class="sort-bar" id="sort-bar">
@@ -482,6 +619,7 @@ body{display:flex;flex-direction:column;position:relative}
   <button class="trail-back" onclick="clearTrail()">← All Trails</button>
   <span class="trail-active-name" id="trail-active-name"></span>
   <span class="trail-active-icon" id="trail-active-icon"></span>
+  <button class="trail-share-btn" id="trail-header-share" onclick="shareCurrentTrail()" title="Share trail">↗</button>
 </div>
 
 <div class="content">
@@ -509,6 +647,27 @@ body{display:flex;flex-direction:column;position:relative}
       <div class="drawer-list" id="map-drawer-list"></div>
     </div>
   </div>
+  <div class="view" id="view-plan">
+    <div class="plan-view">
+      <div class="plan-header-bar">
+        <h3>Day Plan</h3>
+        <button class="plan-btn primary" onclick="openPlanPicker()">+ Add</button>
+        <button class="plan-btn secondary" onclick="optimizeRoute()">⚡ Optimize</button>
+      </div>
+      <div class="plan-stats hidden" id="plan-stats"></div>
+      <div id="plan-list"></div>
+      <div class="plan-empty" id="plan-empty">
+        <div class="plan-empty-icon">📝</div>
+        <div class="plan-empty-title">Build your day</div>
+        <div class="plan-empty-desc">Add places from the + button above, then optimize your route. You can also add places from any card or the map sheet.</div>
+      </div>
+      <div class="plan-bottom-actions hidden" id="plan-bottom-actions">
+        <button class="plan-btn primary" onclick="openGoogleMapsRoute()">🧭 Directions</button>
+        <button class="plan-btn secondary" onclick="sharePlan()">↗ Share</button>
+        <button class="plan-btn danger" onclick="clearPlan()">Clear</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- BOTTOM SHEET -->
@@ -516,6 +675,24 @@ body{display:flex;flex-direction:column;position:relative}
 <div class="place-sheet" id="place-sheet">
   <div class="sheet-handle"><div class="sheet-handle-bar"></div></div>
   <div class="sheet-content" id="sheet-content"></div>
+</div>
+
+<!-- PLAN PICKER -->
+<div class="picker-overlay" id="picker-overlay"></div>
+<div class="plan-picker" id="plan-picker">
+  <div class="sheet-handle"><div class="sheet-handle-bar"></div></div>
+  <div class="picker-header">
+    <div class="picker-title">Add Places to Plan</div>
+    <input class="picker-search" id="picker-search" type="text" placeholder="Search places..." oninput="renderPickerList()">
+  </div>
+  <div class="picker-filters">
+    <div class="filter-chip active" data-pf="all" onclick="setPickerFilter('all')">All</div>
+    <div class="filter-chip" data-pf="favorites" onclick="setPickerFilter('favorites')">❤️ Favorites</div>
+    <div class="filter-chip" data-pf="restaurant" onclick="setPickerFilter('restaurant')">🍽️ Restaurants</div>
+    <div class="filter-chip" data-pf="activity" onclick="setPickerFilter('activity')">🏛️ Activities</div>
+    <div class="filter-chip" data-pf="shop" onclick="setPickerFilter('shop')">🛍️ Shops</div>
+  </div>
+  <div class="picker-list" id="picker-list"></div>
 </div>
 
 </div><!-- close main-app -->
@@ -616,6 +793,8 @@ fetch('chicago_data.json')
     }));
     renderList();
     renderTrails();
+    loadPlan();
+    if (location.hash) { dismissWelcome(); handleHash(); }
   });
 
 function haversine(lat1, lon1, lat2, lon2) {
@@ -651,13 +830,14 @@ function renderTrails() {
   if (!grid || !trails.length) return;
   grid.innerHTML = trails.map(t => {
     const count = allItems.filter(i => i.trails && i.trails.includes(t.id)).length;
-    return `<div class="trail-card" onclick="selectTrail('${t.id}')">
+    return `<div class="trail-card" onclick="selectTrail('${t.id}')" style="position:relative">
       <div class="trail-icon">${t.icon}</div>
       <div class="trail-info">
         <div class="trail-name">${t.name}</div>
         <div class="trail-desc">${t.description}</div>
       </div>
       <div class="trail-count">${count}</div>
+      <button class="trail-share-btn" onclick="event.stopPropagation();shareTrail('${t.id}','${t.name.replace(/'/g,"\\'")}')" title="Share trail">↗</button>
     </div>`;
   }).join('');
 }
@@ -784,7 +964,8 @@ function renderList() {
         </div>
         <div class="card-actions">
           <button class="action-btn primary" onclick="event.stopPropagation();openDirections(${item.lat},${item.lng})">📍 Directions</button>
-          <button class="action-btn map-btn" onclick="event.stopPropagation();showOnMap(${item.lat},${item.lng},'${item.name.replace(/'/g,"\\'")}','${item._type}')">🗺️ Show on Map</button>
+          <button class="action-btn map-btn" onclick="event.stopPropagation();showOnMap(${item.lat},${item.lng},'${item.name.replace(/'/g,"\\'")}','${item._type}')">🗺️ Map</button>
+          <button class="action-btn" onclick="event.stopPropagation();addToPlan('${item.name.replace(/'/g,"\\'")}')">📝 + Plan</button>
         </div>
       </div>
     </div>`;
@@ -821,6 +1002,7 @@ function switchTab(tab) {
   document.getElementById('filter-bar').style.display = tab === 'list' ? 'flex' : 'none';
   document.getElementById('trail-header').style.display = (tab === 'list' && currentTrail) ? 'flex' : 'none';
 
+  if (tab === 'plan') renderPlan();
   if (tab === 'map') {
     setTimeout(() => {
       if (!mapInitialized) initMap();
@@ -1068,6 +1250,9 @@ function openSheet(item) {
   html += `<a class="sheet-action primary" href="${dirUrl}" target="_blank"><span class="sa-icon">🧭</span>Directions</a>`;
   html += `<a class="sheet-action" href="${mapsUrl}" target="_blank"><span class="sa-icon">🗺️</span>Google Maps</a>`;
   if (item.website) html += `<a class="sheet-action" href="${item.website}" target="_blank"><span class="sa-icon">🌐</span>Website</a>`;
+  const planLabel = isInPlan(item.name) ? 'In Plan ✓' : '+ Plan';
+  html += `<button class="sheet-action" onclick="addToPlan('${item.name.replace(/'/g,"\\'")}')"><span class="sa-icon">📝</span>${planLabel}</button>`;
+  html += `<button class="sheet-action" onclick="sharePlace('${item.name.replace(/'/g,"\\'")}')"><span class="sa-icon">↗</span>Share</button>`;
   html += `</div>`;
 
   // Info rows
@@ -1171,6 +1356,354 @@ async function enrichWithGoogle(item, contentEl) {
     // Silently fail — sheet still works without Google enrichment
     console.log('Google Places enrichment failed:', e.message);
   }
+}
+
+// ===== HASH ROUTING & SHARING =====
+const BASE_URL = 'https://dknipme2.github.io/chicago-explorer/';
+
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+function handleHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  const params = new URLSearchParams(hash);
+
+  if (params.has('trail')) {
+    const tid = params.get('trail');
+    if (trails.find(t => t.id === tid)) selectTrail(tid);
+  } else if (params.has('place')) {
+    const slug = params.get('place');
+    const item = allItems.find(i => slugify(i.name) === slug);
+    if (item) { switchTab('list'); setTimeout(() => openSheet(item), 200); }
+  } else if (params.has('plan')) {
+    const slugs = params.get('plan').split(',').filter(Boolean);
+    const names = slugs.map(s => {
+      const item = allItems.find(i => slugify(i.name) === s);
+      return item ? item.name : null;
+    }).filter(Boolean);
+    if (names.length) {
+      localStorage.setItem('chicago_plan', JSON.stringify(names));
+      switchTab('plan');
+    }
+  }
+}
+window.addEventListener('hashchange', handleHash);
+
+// Toast
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) { t = document.createElement('div'); t.id = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// Share utility
+async function shareLink(url, title, text) {
+  try {
+    if (navigator.share) {
+      await navigator.share({ title, text, url });
+      return;
+    }
+  } catch(e) { /* user cancelled or not supported */ }
+  try {
+    await navigator.clipboard.writeText(url);
+    showToast('Link copied!');
+  } catch(e) {
+    prompt('Copy this link:', url);
+  }
+}
+
+// Trail sharing
+function shareTrail(trailId, trailName) {
+  const url = BASE_URL + '#trail=' + trailId;
+  shareLink(url, trailName + ' — Chicago Explorer', 'Check out the ' + trailName + ' trail!');
+}
+function shareCurrentTrail() {
+  if (!currentTrail) return;
+  const trail = trails.find(t => t.id === currentTrail);
+  if (trail) shareTrail(trail.id, trail.name);
+}
+function sharePlace(name) {
+  const url = BASE_URL + '#place=' + slugify(name);
+  shareLink(url, name + ' — Chicago Explorer', 'Check out ' + name + '!');
+}
+
+// ===== DAY PLANNER =====
+let planItems = [];
+let pickerFilter = 'all';
+
+function loadPlan() {
+  try { planItems = JSON.parse(localStorage.getItem('chicago_plan') || '[]'); } catch { planItems = []; }
+}
+function savePlan() {
+  localStorage.setItem('chicago_plan', JSON.stringify(planItems));
+}
+function getPlanPlaces() {
+  return planItems.map(name => allItems.find(i => i.name === name)).filter(Boolean);
+}
+function isInPlan(name) { return planItems.includes(name); }
+
+function addToPlan(name) {
+  loadPlan();
+  if (planItems.includes(name)) return showToast('Already in plan');
+  planItems.push(name);
+  savePlan();
+  showToast('Added to plan');
+  if (document.getElementById('view-plan').classList.contains('active')) renderPlan();
+}
+function removePlanItem(idx) {
+  loadPlan();
+  planItems.splice(idx, 1);
+  savePlan();
+  renderPlan();
+}
+function clearPlan() {
+  if (!planItems.length) return;
+  if (!confirm('Clear all stops from your plan?')) return;
+  planItems = [];
+  savePlan();
+  renderPlan();
+  showToast('Plan cleared');
+}
+function movePlanItem(idx, dir) {
+  loadPlan();
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= planItems.length) return;
+  [planItems[idx], planItems[newIdx]] = [planItems[newIdx], planItems[idx]];
+  savePlan();
+  renderPlan();
+}
+
+function renderPlan() {
+  loadPlan();
+  const places = getPlanPlaces();
+  const listEl = document.getElementById('plan-list');
+  const emptyEl = document.getElementById('plan-empty');
+  const statsEl = document.getElementById('plan-stats');
+  const actionsEl = document.getElementById('plan-bottom-actions');
+
+  if (!places.length) {
+    listEl.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    statsEl.classList.add('hidden');
+    actionsEl.classList.add('hidden');
+    return;
+  }
+  emptyEl.classList.add('hidden');
+  statsEl.classList.remove('hidden');
+  actionsEl.classList.remove('hidden');
+
+  let totalDist = 0;
+  let prevLat = userLatLng ? userLatLng.lat : null;
+  let prevLng = userLatLng ? userLatLng.lng : null;
+
+  listEl.innerHTML = places.map((item, idx) => {
+    let legHtml = '';
+    if (prevLat != null) {
+      const d = haversine(prevLat, prevLng, item.lat, item.lng);
+      totalDist += d;
+      legHtml = `<div class="plan-item-leg">${idx === 0 && userLatLng ? '📍 ' : '↓ '}${formatDist(d)}</div>`;
+    }
+    prevLat = item.lat;
+    prevLng = item.lng;
+
+    const meta = [item.neighborhood, item.price || item.cost].filter(Boolean).join(' · ');
+    const eName = item.name.replace(/'/g, "\\'");
+
+    return `${legHtml}<div class="plan-item" draggable="true" data-pidx="${idx}">
+      <div class="plan-item-num">${idx + 1}</div>
+      <div class="plan-item-icon">${item._icon}</div>
+      <div class="plan-item-info">
+        <div class="plan-item-name">${item.name}</div>
+        <div class="plan-item-meta">${meta}</div>
+      </div>
+      <div class="plan-drag-handle" title="Drag to reorder">☰</div>
+      <div class="plan-move-btns">
+        <button class="plan-move-btn" onclick="movePlanItem(${idx},-1)" ${idx === 0 ? 'disabled' : ''}>▲</button>
+        <button class="plan-move-btn" onclick="movePlanItem(${idx},1)" ${idx === places.length - 1 ? 'disabled' : ''}>▼</button>
+      </div>
+      <button class="plan-item-remove" onclick="removePlanItem(${idx})" title="Remove">✕</button>
+    </div>`;
+  }).join('');
+
+  // Stats
+  const totalMi = (totalDist * 0.621371).toFixed(1);
+  const estMin = Math.round(totalDist * 0.621371 / 25 * 60); // ~25mph city
+  statsEl.innerHTML = `<span><span class="stat-val">${places.length}</span>stops</span>` +
+    (totalDist > 0 ? `<span><span class="stat-val">${totalMi}</span>mi total</span><span><span class="stat-val">~${estMin}</span>min driving</span>` : '');
+
+  attachPlanDragEvents();
+}
+
+// Drag-to-reorder (desktop)
+function attachPlanDragEvents() {
+  let dragIdx = null;
+  document.querySelectorAll('.plan-item[draggable]').forEach(el => {
+    el.addEventListener('dragstart', e => {
+      dragIdx = parseInt(el.dataset.pidx);
+      el.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    el.addEventListener('dragend', () => {
+      el.classList.remove('dragging');
+      document.querySelectorAll('.plan-item').forEach(i => i.classList.remove('drag-over'));
+      dragIdx = null;
+    });
+    el.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      el.classList.add('drag-over');
+    });
+    el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+    el.addEventListener('drop', e => {
+      e.preventDefault();
+      el.classList.remove('drag-over');
+      const dropIdx = parseInt(el.dataset.pidx);
+      if (dragIdx == null || dragIdx === dropIdx) return;
+      loadPlan();
+      const [moved] = planItems.splice(dragIdx, 1);
+      planItems.splice(dropIdx, 0, moved);
+      savePlan();
+      renderPlan();
+    });
+  });
+}
+
+// Plan picker
+function openPlanPicker() {
+  loadPlan();
+  document.getElementById('plan-picker').classList.add('open');
+  document.getElementById('picker-overlay').classList.add('open');
+  document.getElementById('picker-search').value = '';
+  pickerFilter = 'all';
+  document.querySelectorAll('[data-pf]').forEach(c => c.classList.toggle('active', c.dataset.pf === 'all'));
+  renderPickerList();
+  setTimeout(() => document.getElementById('picker-search').focus(), 100);
+}
+function closePlanPicker() {
+  document.getElementById('plan-picker').classList.remove('open');
+  document.getElementById('picker-overlay').classList.remove('open');
+  renderPlan();
+}
+document.getElementById('picker-overlay').addEventListener('click', closePlanPicker);
+
+function setPickerFilter(f) {
+  pickerFilter = f;
+  document.querySelectorAll('[data-pf]').forEach(c => c.classList.toggle('active', c.dataset.pf === f));
+  renderPickerList();
+}
+
+function renderPickerList() {
+  const q = (document.getElementById('picker-search').value || '').toLowerCase();
+  let items = [...allItems];
+  if (pickerFilter === 'favorites') { const favs = getFavs(); items = items.filter(i => favs.includes(i.name)); }
+  else if (pickerFilter !== 'all') items = items.filter(i => i._type === pickerFilter);
+  if (q) items = items.filter(i =>
+    i.name.toLowerCase().includes(q) ||
+    (i.cuisine || '').toLowerCase().includes(q) ||
+    (i.neighborhood || '').toLowerCase().includes(q)
+  );
+  items.sort((a, b) => b.score - a.score);
+
+  const listEl = document.getElementById('picker-list');
+  loadPlan();
+  listEl.innerHTML = items.map(item => {
+    const inPlan = planItems.includes(item.name);
+    const meta = [item.neighborhood, item.cuisine || item.subtype, item.price || item.cost].filter(Boolean).join(' · ');
+    const eName = item.name.replace(/'/g, "\\'");
+    return `<div class="picker-item" onclick="togglePlanItem('${eName}')">
+      <div class="picker-item-icon">${item._icon}</div>
+      <div class="picker-item-info">
+        <div class="picker-item-name">${item.name}</div>
+        <div class="picker-item-meta">${meta}</div>
+      </div>
+      <div class="picker-item-toggle ${inPlan ? 'added' : 'not-added'}">${inPlan ? '✓' : '+'}</div>
+    </div>`;
+  }).join('');
+}
+
+function togglePlanItem(name) {
+  loadPlan();
+  if (planItems.includes(name)) { planItems = planItems.filter(n => n !== name); }
+  else { planItems.push(name); }
+  savePlan();
+  renderPickerList();
+}
+
+// Route optimization — nearest-neighbor
+function optimizeRoute() {
+  loadPlan();
+  if (planItems.length < 3) return showToast('Need 3+ stops to optimize');
+  const places = getPlanPlaces();
+  if (places.length < 3) return showToast('Need 3+ stops to optimize');
+
+  const startLat = userLatLng ? userLatLng.lat : 41.8778; // Glen Ellyn default
+  const startLng = userLatLng ? userLatLng.lng : -88.0678;
+
+  const visited = new Set();
+  const ordered = [];
+  let curLat = startLat, curLng = startLng;
+
+  while (ordered.length < places.length) {
+    let bestDist = Infinity, bestIdx = -1;
+    places.forEach((p, i) => {
+      if (visited.has(i)) return;
+      const d = haversine(curLat, curLng, p.lat, p.lng);
+      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    });
+    visited.add(bestIdx);
+    ordered.push(places[bestIdx].name);
+    curLat = places[bestIdx].lat;
+    curLng = places[bestIdx].lng;
+  }
+
+  planItems = ordered;
+  savePlan();
+  renderPlan();
+  showToast('Route optimized!');
+}
+
+// Google Maps multi-stop directions
+function openGoogleMapsRoute() {
+  loadPlan();
+  const places = getPlanPlaces();
+  if (!places.length) return;
+
+  if (places.length === 1) {
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${places[0].lat},${places[0].lng}`, '_blank');
+    return;
+  }
+
+  const origin = userLatLng
+    ? `${userLatLng.lat},${userLatLng.lng}`
+    : `${places[0].lat},${places[0].lng}`;
+  const dest = `${places[places.length - 1].lat},${places[places.length - 1].lng}`;
+
+  const startIdx = userLatLng ? 0 : 1;
+  const endIdx = places.length - 1;
+  const waypoints = places.slice(startIdx, endIdx).map(p => `${p.lat},${p.lng}`);
+
+  if (waypoints.length > 10) showToast('Google Maps supports max 10 waypoints — route truncated');
+  const wpStr = waypoints.slice(0, 10).join('|');
+
+  let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${dest}&travelmode=driving`;
+  if (wpStr) url += `&waypoints=${wpStr}`;
+  window.open(url, '_blank');
+}
+
+// Share plan
+function sharePlan() {
+  loadPlan();
+  const places = getPlanPlaces();
+  if (!places.length) return showToast('Plan is empty');
+  const slugs = places.map(p => slugify(p.name)).join(',');
+  const url = BASE_URL + '#plan=' + slugs;
+  const names = places.map(p => p.name).join(' → ');
+  shareLink(url, 'Chicago Day Plan', names);
 }
 
 </script>
