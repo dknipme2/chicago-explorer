@@ -261,6 +261,78 @@ body{display:flex;flex-direction:column;position:relative}
 /* Empty state */
 .empty-state{text-align:center;padding:40px 20px;color:var(--text3);font-size:13px}
 
+/* Welcome screen */
+.welcome-screen{
+  position:fixed;inset:0;z-index:1000;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+.welcome-content{max-width:400px;padding:32px 24px;text-align:center}
+.welcome-emoji{font-size:48px;margin-bottom:12px}
+.welcome-title{font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.welcome-sub{font-size:14px;color:var(--text2);margin-bottom:20px}
+.welcome-card{background:var(--surface-glass);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:left;margin-bottom:20px}
+.welcome-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.welcome-desc strong{color:var(--text)}
+.welcome-how{text-align:left;margin-bottom:24px}
+.how-title{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:600;margin-bottom:10px}
+.how-item{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px;padding-left:4px}
+.how-item strong{color:var(--text)}
+.welcome-btn{
+  width:100%;padding:14px;border:none;border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--orange),var(--pink));
+  color:#0f172a;font-size:16px;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:transform .15s;
+}
+.welcome-btn:active{transform:scale(0.97)}
+.welcome-footer{font-size:11px;color:var(--text3);margin-top:12px}
+
+/* Trails view */
+.trails-grid{padding:12px 16px 100px}
+.trail-card{
+  background:var(--surface-glass);backdrop-filter:blur(12px) saturate(1.2);
+  border:1px solid var(--border);border-top-color:rgba(255,255,255,0.12);
+  border-radius:var(--radius);padding:16px;margin-bottom:10px;cursor:pointer;
+  transition:transform .15s,background .15s;
+  display:flex;align-items:center;gap:14px;
+  opacity:0;transform:translateY(12px);animation:card-enter .3s forwards;
+}
+.trail-card:nth-child(2){animation-delay:40ms}
+.trail-card:nth-child(3){animation-delay:80ms}
+.trail-card:nth-child(4){animation-delay:120ms}
+.trail-card:nth-child(5){animation-delay:160ms}
+.trail-card:nth-child(6){animation-delay:200ms}
+.trail-card:nth-child(7){animation-delay:240ms}
+.trail-card:nth-child(8){animation-delay:280ms}
+.trail-card:nth-child(9){animation-delay:320ms}
+.trail-card:nth-child(10){animation-delay:360ms}
+.trail-card:nth-child(11){animation-delay:400ms}
+.trail-card:nth-child(12){animation-delay:440ms}
+.trail-card:active{transform:scale(0.98);background:var(--surface-2)}
+.trail-icon{font-size:28px;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(251,146,60,0.1);flex-shrink:0}
+.trail-info{flex:1;min-width:0}
+.trail-name{font-size:15px;font-weight:700}
+.trail-desc{font-size:11px;color:var(--text2);margin-top:2px;line-height:1.4}
+.trail-count{font-size:12px;font-weight:700;color:var(--orange);flex-shrink:0}
+
+/* Active trail header */
+.trail-header{
+  display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:var(--surface-1);border-bottom:1px solid var(--border-subtle);flex-shrink:0;
+}
+.trail-header.hidden{display:none}
+.trail-back{border:none;background:none;color:var(--blue);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;padding:4px 0}
+.trail-active-name{font-size:13px;font-weight:700;flex:1}
+.trail-active-icon{font-size:18px}
+
+/* Must try badge */
+.must-try{
+  font-size:11px;color:var(--amber);margin-top:6px;padding:6px 10px;
+  background:rgba(251,191,36,0.08);border-radius:var(--radius-sm);
+  border-left:2px solid var(--amber);display:none;
+}
+.place-card.expanded .must-try{display:block}
+
 /* Bottom safe area */
 .safe-bottom{height:env(safe-area-inset-bottom,0px);background:var(--bg);flex-shrink:0}
 </style>
@@ -268,17 +340,42 @@ body{display:flex;flex-direction:column;position:relative}
 <body>
 <div class="safe-top"></div>
 
+<!-- WELCOME SCREEN -->
+<div id="welcome-screen" class="welcome-screen">
+  <div class="welcome-content">
+    <div class="welcome-emoji">🔥🦉</div>
+    <h1 class="welcome-title">Hey Nikki!</h1>
+    <p class="welcome-sub">Dan made you a custom Chicago adventure guide</p>
+    <div class="welcome-card">
+      <p class="welcome-desc">This app was built just for your visit. We researched Bib Gourmand spots, hidden oddity shops, the best doughnuts in the city, baklava bakeries, exotic snack aisles, and way more — then organized everything into <strong>theme trails</strong> you can explore.</p>
+    </div>
+    <div class="welcome-how">
+      <div class="how-title">How it works</div>
+      <div class="how-item">🥟 <strong>Pick a trail</strong> — like Dumpling Universe, Sweet Tooth, or Curiosity Cabinet</div>
+      <div class="how-item">⭐ <strong>Every spot has a score</strong> and a "must try" item so you know what to order</div>
+      <div class="how-item">📍 <strong>Sort by nearest</strong> to find what's close to you right now</div>
+      <div class="how-item">🗺️ <strong>Map tab</strong> shows everything on a map with directions</div>
+      <div class="how-item">🏠 <strong>Based from Glen Ellyn</strong> — spots on the route to the city are marked</div>
+    </div>
+    <button class="welcome-btn" onclick="dismissWelcome()">Let's Explore! →</button>
+    <div class="welcome-footer">70+ curated spots across 12 theme trails</div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app" style="display:none;flex-direction:column;flex:1;overflow:hidden">
 <div class="header">
   <div class="header-top">
     <div>
       <div class="app-title">🔥 Chicago Explorer</div>
-      <div class="app-subtitle">Off-beat eats & adventures — Knipmeyer siblings edition</div>
+      <div class="app-subtitle">Nikki's off-beat eats & adventures guide</div>
     </div>
   </div>
 </div>
 
 <div class="tab-bar">
   <button class="tab-btn active" data-tab="list" onclick="switchTab('list')">📋 Discover</button>
+  <button class="tab-btn" data-tab="trails" onclick="switchTab('trails')">🥟 Trails</button>
   <button class="tab-btn" data-tab="map" onclick="switchTab('map')">🗺️ Map</button>
 </div>
 
@@ -295,15 +392,21 @@ body{display:flex;flex-direction:column;position:relative}
   <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">All</div>
   <div class="filter-chip" data-filter="restaurant" onclick="setFilter('restaurant')">🍽️ Restaurants</div>
   <div class="filter-chip" data-filter="activity" onclick="setFilter('activity')">🏛️ Activities</div>
-  <div class="filter-chip" data-filter="neighborhood-crawl" onclick="setFilter('neighborhood-crawl')">🚶 Neighborhood Crawls</div>
-  <div class="filter-chip" data-filter="chef-driven" onclick="setFilter('chef-driven')">👨‍🍳 Chef-Driven</div>
-  <div class="filter-chip" data-filter="bib-gourmand" onclick="setFilter('bib-gourmand')">⭐ Bib Gourmand</div>
-  <div class="filter-chip" data-filter="free" onclick="setFilter('free')">🆓 Free</div>
+  <div class="filter-chip" data-filter="shop" onclick="setFilter('shop')">🛍️ Shops</div>
+</div>
+
+<div class="trail-header hidden" id="trail-header">
+  <button class="trail-back" onclick="clearTrail()">← All Trails</button>
+  <span class="trail-active-name" id="trail-active-name"></span>
+  <span class="trail-active-icon" id="trail-active-icon"></span>
 </div>
 
 <div class="content">
   <div class="view active" id="view-list">
     <div class="list-view" id="card-list"></div>
+  </div>
+  <div class="view" id="view-trails">
+    <div class="trails-grid" id="trails-grid"></div>
   </div>
   <div class="view map-view" id="view-map">
     <div class="map-filters" id="map-filters">
@@ -323,6 +426,8 @@ body{display:flex;flex-direction:column;position:relative}
   </div>
 </div>
 
+</div><!-- close main-app -->
+
 <div class="safe-bottom"></div>
 
 <script src="config.js"></script>
@@ -331,8 +436,10 @@ body{display:flex;flex-direction:column;position:relative}
 const MAPBOX_TOKEN = window.MAPBOX_CONFIG?.token || new URLSearchParams(location.search).get('token') || '';
 let DATA = null;
 let allItems = [];
+let trails = [];
 let currentSort = 'score';
 let currentFilter = 'all';
+let currentTrail = null;
 let currentMapFilter = 'all';
 let userLatLng = null;
 let mapInstance = null;
@@ -340,6 +447,18 @@ let mapInitialized = false;
 let mapMarkers = [];
 let mapPopup = null;
 let drawerCollapsed = false;
+
+// Welcome screen
+function dismissWelcome() {
+  document.getElementById('welcome-screen').style.display = 'none';
+  const app = document.getElementById('main-app');
+  app.style.display = 'flex';
+  localStorage.setItem('chicago_welcomed', '1');
+}
+if (localStorage.getItem('chicago_welcomed')) {
+  document.getElementById('welcome-screen').style.display = 'none';
+  document.getElementById('main-app').style.display = 'flex';
+}
 
 // Track user location
 if ('geolocation' in navigator) {
@@ -350,20 +469,36 @@ if ('geolocation' in navigator) {
   }, () => {}, { enableHighAccuracy: true });
 }
 
+// Icon mapping
+function getIcon(item) {
+  if (item.type === 'restaurant') return '🍽️';
+  if (item.type === 'shop') return '🛍️';
+  if (item.subtype === 'museum') return '🏛️';
+  if (item.subtype === 'nature') return '🌿';
+  if (item.subtype === 'outdoor') return '🏞️';
+  if (item.subtype === 'market') return '🛒';
+  if (item.subtype === 'tour') return '🚶';
+  if (item.subtype === 'shop') return '🛍️';
+  if (item.subtype === 'experience') return '🎮';
+  if (item.subtype === 'art-walk') return '🎨';
+  if (item.subtype === 'neighborhood') return '📍';
+  if (item.subtype === 'shopping') return '🏪';
+  return '📍';
+}
+
 // Load data
 fetch('chicago_data.json')
   .then(r => r.json())
   .then(data => {
     DATA = data;
-    // Merge restaurants and activities into unified list
-    allItems = [];
-    data.restaurants.forEach(r => {
-      allItems.push({ ...r, _type: 'restaurant', _icon: '🍽️' });
-    });
-    data.activities.forEach(a => {
-      allItems.push({ ...a, _type: 'activity', _icon: a.type === 'neighborhood-crawl' ? '🚶' : a.type === 'outdoor-adventure' ? '🏞️' : a.type === 'offbeat-museum' ? '🏛️' : a.type === 'market' ? '🛒' : '🎨' });
-    });
+    trails = data.trails || [];
+    allItems = (data.places || []).map(p => ({
+      ...p,
+      _type: p.type,
+      _icon: getIcon(p)
+    }));
     renderList();
+    renderTrails();
   });
 
 function haversine(lat1, lon1, lat2, lon2) {
@@ -382,14 +517,49 @@ function formatDist(km) {
 
 function getFiltered() {
   let items = [...allItems];
+  // Trail filter first
+  if (currentTrail) {
+    items = items.filter(i => i.trails && i.trails.includes(currentTrail));
+  }
   if (currentFilter === 'all') return items;
   if (currentFilter === 'restaurant') return items.filter(i => i._type === 'restaurant');
   if (currentFilter === 'activity') return items.filter(i => i._type === 'activity');
-  if (currentFilter === 'neighborhood-crawl') return items.filter(i => i.type === 'neighborhood-crawl' || (i.tags && i.tags.includes('neighborhood-crawl')));
-  if (currentFilter === 'chef-driven') return items.filter(i => i.subtype === 'Chef-driven' || i.subtype === 'Elevated');
-  if (currentFilter === 'bib-gourmand') return items.filter(i => i.tags && i.tags.some(t => t.includes('bib')));
-  if (currentFilter === 'free') return items.filter(i => i.cost === 'Free' || i.cost === 'Free entry' || i.cost === 'Free (food separate)');
+  if (currentFilter === 'shop') return items.filter(i => i._type === 'shop' || i.subtype === 'shop');
   return items;
+}
+
+function renderTrails() {
+  const grid = document.getElementById('trails-grid');
+  if (!grid || !trails.length) return;
+  grid.innerHTML = trails.map(t => {
+    const count = allItems.filter(i => i.trails && i.trails.includes(t.id)).length;
+    return `<div class="trail-card" onclick="selectTrail('${t.id}')">
+      <div class="trail-icon">${t.icon}</div>
+      <div class="trail-info">
+        <div class="trail-name">${t.name}</div>
+        <div class="trail-desc">${t.description}</div>
+      </div>
+      <div class="trail-count">${count}</div>
+    </div>`;
+  }).join('');
+}
+
+function selectTrail(trailId) {
+  currentTrail = trailId;
+  const trail = trails.find(t => t.id === trailId);
+  if (trail) {
+    document.getElementById('trail-active-name').textContent = trail.name;
+    document.getElementById('trail-active-icon').textContent = trail.icon;
+    document.getElementById('trail-header').classList.remove('hidden');
+  }
+  switchTab('list');
+  renderList();
+}
+
+function clearTrail() {
+  currentTrail = null;
+  document.getElementById('trail-header').classList.add('hidden');
+  renderList();
 }
 
 function getSorted(items) {
@@ -461,9 +631,10 @@ function renderList() {
       `<span class="tag ${tagClass(t)}">${t.replace(/-/g, ' ')}</span>`
     ).join('');
 
-    const cuisineOrType = isRestaurant
+    const cuisineOrType = item.cuisine
       ? `${item.cuisine}${item.subtype ? ' · ' + item.subtype : ''}`
-      : item.type ? item.type.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : '';
+      : item.subtype ? item.subtype.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : '';
+    const mustTryHtml = item.must_try ? `<div class="must-try">⭐ <strong>Must try:</strong> ${item.must_try}</div>` : '';
 
     // Expanded info grid
     const hoursHtml = item.hours ? `<div class="info-item"><div class="info-label">Hours</div>${item.hours}</div>` : '';
@@ -486,6 +657,7 @@ function renderList() {
       </div>
       <div class="card-tags">${tagsHtml}</div>
       <div class="card-expanded">
+        ${mustTryHtml}
         <div class="card-desc">${item.description || ''}</div>
         <div class="card-rationale">${item.rationale || ''}</div>
         <div class="card-info-grid">
@@ -528,6 +700,7 @@ function switchTab(tab) {
   // Show/hide sort and filter bars
   document.getElementById('sort-bar').style.display = tab === 'list' ? 'flex' : 'none';
   document.getElementById('filter-bar').style.display = tab === 'list' ? 'flex' : 'none';
+  document.getElementById('trail-header').style.display = (tab === 'list' && currentTrail) ? 'flex' : 'none';
 
   if (tab === 'map') {
     setTimeout(() => {
