@@ -126,6 +126,15 @@ body{display:flex;flex-direction:column;position:relative}
 .card-name{font-size:14px;font-weight:700;line-height:1.3}
 .card-cuisine{font-size:11px;color:var(--text2);margin-top:2px}
 
+/* Favorite button */
+.fav-btn{
+  flex-shrink:0;width:32px;height:32px;border:none;background:none;
+  font-size:18px;cursor:pointer;padding:0;line-height:1;
+  opacity:0.3;transition:opacity .15s,transform .15s;
+}
+.fav-btn:active{transform:scale(1.3)}
+.fav-btn.active{opacity:1}
+
 /* Score badge */
 .score-badge{
   flex-shrink:0;min-width:36px;height:36px;border-radius:10px;
@@ -463,6 +472,7 @@ body{display:flex;flex-direction:column;position:relative}
 
 <div class="filter-bar" id="filter-bar">
   <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">All</div>
+  <div class="filter-chip" data-filter="favorites" onclick="setFilter('favorites')">❤️ Favorites</div>
   <div class="filter-chip" data-filter="restaurant" onclick="setFilter('restaurant')">🍽️ Restaurants</div>
   <div class="filter-chip" data-filter="activity" onclick="setFilter('activity')">🏛️ Activities</div>
   <div class="filter-chip" data-filter="shop" onclick="setFilter('shop')">🛍️ Shops</div>
@@ -555,6 +565,27 @@ if ('geolocation' in navigator) {
   }, () => {}, { enableHighAccuracy: true });
 }
 
+// Favorites (localStorage)
+function getFavs() {
+  try { return JSON.parse(localStorage.getItem('chicago_favs') || '[]'); } catch { return []; }
+}
+function isFav(name) { return getFavs().includes(name); }
+function toggleFav(name, btnEl) {
+  let favs = getFavs();
+  if (favs.includes(name)) { favs = favs.filter(f => f !== name); }
+  else { favs.push(name); }
+  localStorage.setItem('chicago_favs', JSON.stringify(favs));
+  if (btnEl) btnEl.classList.toggle('active', favs.includes(name));
+  // Update any other fav buttons for the same item
+  document.querySelectorAll('.fav-btn').forEach(b => {
+    if (b.getAttribute('onclick')?.includes(name.replace(/'/g,"\\'"))) {
+      b.classList.toggle('active', favs.includes(name));
+    }
+  });
+  // Re-render if filtering by favorites
+  if (currentFilter === 'favorites') renderList();
+}
+
 // Icon mapping
 function getIcon(item) {
   if (item.type === 'restaurant') return '🍽️';
@@ -608,6 +639,7 @@ function getFiltered() {
     items = items.filter(i => i.trails && i.trails.includes(currentTrail));
   }
   if (currentFilter === 'all') return items;
+  if (currentFilter === 'favorites') { const favs = getFavs(); return items.filter(i => favs.includes(i.name)); }
   if (currentFilter === 'restaurant') return items.filter(i => i._type === 'restaurant');
   if (currentFilter === 'activity') return items.filter(i => i._type === 'activity');
   if (currentFilter === 'shop') return items.filter(i => i._type === 'shop' || i.subtype === 'shop');
@@ -736,6 +768,7 @@ function renderList() {
           <div class="card-cuisine">${cuisineOrType}</div>
         </div>
         <div class="score-badge score-${scoreClass(item.score)}">${item.score}</div>
+        <button class="fav-btn${isFav(item.name) ? ' active' : ''}" onclick="event.stopPropagation();toggleFav('${item.name.replace(/'/g,"\\'")}',this)" title="Save to favorites">❤️</button>
       </div>
       <div class="card-meta">
         ${neighborhoodHtml}${priceHtml}${costHtml}${durationHtml}${distHtml}
@@ -1030,6 +1063,8 @@ function openSheet(item) {
   const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}`;
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' ' + (item.address || ''))}`;
   html += `<div class="sheet-actions">`;
+  const favActive = isFav(item.name) ? ' active' : '';
+  html += `<button class="sheet-action fav-btn${favActive}" onclick="toggleFav('${item.name.replace(/'/g,"\\'")}',this)" style="opacity:${isFav(item.name)?'1':'0.4'}"><span class="sa-icon">❤️</span>${isFav(item.name)?'Saved':'Save'}</button>`;
   html += `<a class="sheet-action primary" href="${dirUrl}" target="_blank"><span class="sa-icon">🧭</span>Directions</a>`;
   html += `<a class="sheet-action" href="${mapsUrl}" target="_blank"><span class="sa-icon">🗺️</span>Google Maps</a>`;
   if (item.website) html += `<a class="sheet-action" href="${item.website}" target="_blank"><span class="sa-icon">🌐</span>Website</a>`;
