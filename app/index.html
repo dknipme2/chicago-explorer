@@ -333,6 +333,78 @@ body{display:flex;flex-direction:column;position:relative}
 }
 .place-card.expanded .must-try{display:block}
 
+/* ===== GOOGLE-STYLE BOTTOM SHEET ===== */
+.sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:199;opacity:0;pointer-events:none;transition:opacity .3s}
+.sheet-overlay.open{opacity:1;pointer-events:auto}
+.place-sheet{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:var(--surface-1);border-top-left-radius:16px;border-top-right-radius:16px;
+  transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+  max-height:75vh;display:flex;flex-direction:column;
+}
+.place-sheet.open{transform:translateY(0)}
+.sheet-handle{padding:10px 0 6px;text-align:center;cursor:grab;touch-action:none}
+.sheet-handle-bar{width:36px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);margin:0 auto}
+.sheet-content{overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom,16px)}
+.sheet-header{padding:0 16px 8px}
+.sheet-name{font-size:20px;font-weight:700;line-height:1.3}
+.sheet-meta{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:13px;color:var(--text2);flex-wrap:wrap}
+.sheet-rating{display:flex;align-items:center;gap:4px;color:var(--amber)}
+.sheet-rating-num{font-weight:700;color:var(--text)}
+.sheet-reviews{color:var(--text3)}
+.sheet-category{color:var(--text3);font-size:12px}
+.sheet-score{
+  display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:8px;font-size:12px;font-weight:700;
+}
+.sheet-score.high{background:rgba(52,211,153,0.15);color:var(--green)}
+.sheet-score.mid{background:rgba(251,191,36,0.15);color:var(--amber)}
+.sheet-must-try{
+  margin:8px 16px;padding:10px 12px;border-radius:var(--radius-sm);
+  background:rgba(251,191,36,0.08);border-left:3px solid var(--amber);
+  font-size:12px;color:var(--amber);
+}
+.sheet-must-try strong{color:var(--text)}
+.sheet-rationale{
+  margin:0 16px 8px;padding:10px 12px;border-radius:var(--radius-sm);
+  background:rgba(251,146,60,0.06);border-left:3px solid var(--orange);
+  font-size:12px;color:var(--text);line-height:1.5;font-style:italic;
+}
+.sheet-actions{display:flex;gap:8px;padding:8px 16px;overflow-x:auto;scrollbar-width:none}
+.sheet-actions::-webkit-scrollbar{display:none}
+.sheet-action{
+  display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:var(--surface-2);color:var(--text);
+  font-size:11px;font-weight:600;white-space:nowrap;cursor:pointer;text-decoration:none;font-family:inherit;
+}
+.sheet-action:active{background:var(--surface-3)}
+.sheet-action.primary{background:var(--blue);color:#0f172a;border-color:var(--blue)}
+.sheet-action .sa-icon{font-size:16px}
+.sheet-info{padding:8px 16px 16px}
+.sheet-info-row{
+  display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border-subtle);
+  font-size:12px;color:var(--text2);align-items:flex-start;
+}
+.sheet-info-row:last-child{border-bottom:none}
+.sheet-info-icon{width:18px;flex-shrink:0;text-align:center;color:var(--text3)}
+.sheet-info-row a{color:var(--blue);text-decoration:none;word-break:break-all}
+.sheet-trail-chips{display:flex;flex-wrap:wrap;gap:4px;padding:4px 16px 8px}
+.sheet-trail{font-size:10px;padding:3px 8px;border-radius:10px;background:rgba(251,146,60,0.1);color:var(--orange);font-weight:600;cursor:pointer}
+.sheet-trail:active{background:rgba(251,146,60,0.2)}
+.sheet-desc{padding:0 16px 8px;font-size:12px;color:var(--text2);line-height:1.5}
+
+/* Map trail chips - extend existing map-chip */
+.map-trail-chips{
+  position:absolute;top:40px;left:8px;right:8px;z-index:5;
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+}
+.map-trail-chips::-webkit-scrollbar{display:none}
+.map-trail-chip{
+  flex-shrink:0;padding:5px 10px;border-radius:16px;font-size:10px;font-weight:600;
+  background:var(--surface-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);color:var(--text2);cursor:pointer;white-space:nowrap;
+}
+.map-trail-chip.active{border-color:var(--orange);color:var(--orange);background:rgba(251,146,60,0.15)}
+
 /* Bottom safe area */
 .safe-bottom{height:env(safe-area-inset-bottom,0px);background:var(--bg);flex-shrink:0}
 </style>
@@ -413,7 +485,9 @@ body{display:flex;flex-direction:column;position:relative}
       <div class="map-chip active" data-filter="all" onclick="setMapFilter('all')">All</div>
       <div class="map-chip" data-filter="restaurant" onclick="setMapFilter('restaurant')">Restaurants</div>
       <div class="map-chip" data-filter="activity" onclick="setMapFilter('activity')">Activities</div>
+      <div class="map-chip" data-filter="shop" onclick="setMapFilter('shop')">Shops</div>
     </div>
+    <div class="map-trail-chips" id="map-trail-chips"></div>
     <div id="mapbox-map"></div>
     <div class="map-drawer" id="map-drawer">
       <div class="drawer-handle" id="map-drawer-handle"><div class="drawer-handle-bar"></div></div>
@@ -424,6 +498,13 @@ body{display:flex;flex-direction:column;position:relative}
       <div class="drawer-list" id="map-drawer-list"></div>
     </div>
   </div>
+</div>
+
+<!-- BOTTOM SHEET -->
+<div class="sheet-overlay" id="sheet-overlay"></div>
+<div class="place-sheet" id="place-sheet">
+  <div class="sheet-handle"><div class="sheet-handle-bar"></div></div>
+  <div class="sheet-content" id="sheet-content"></div>
 </div>
 
 </div><!-- close main-app -->
@@ -759,6 +840,7 @@ function renderMapMarkers() {
 
   allItems.forEach(item => {
     if (currentMapFilter !== 'all' && item._type !== currentMapFilter) return;
+    if (typeof currentMapTrail !== 'undefined' && currentMapTrail && (!item.trails || !item.trails.includes(currentMapTrail))) return;
 
     const el = createMarkerEl(item._type);
     const marker = new mapboxgl.Marker({ element: el })
@@ -768,7 +850,8 @@ function renderMapMarkers() {
     el.addEventListener('click', (e) => {
       e.stopPropagation();
       mapInstance.flyTo({ center: [item.lng, item.lat], zoom: 14, duration: 600 });
-      showPopup(item.lat, item.lng, item.name, item._type);
+      if (typeof openSheet === 'function') openSheet(item);
+      else showPopup(item.lat, item.lng, item.name, item._type);
     });
 
     mapMarkers.push({ marker, type: item._type, el });
@@ -791,6 +874,7 @@ function updateDrawer() {
   const list = document.getElementById('map-drawer-list');
   const count = document.getElementById('drawer-count');
   let items = allItems.filter(i => currentMapFilter === 'all' || i._type === currentMapFilter);
+  if (typeof currentMapTrail !== 'undefined' && currentMapTrail) items = items.filter(i => i.trails && i.trails.includes(currentMapTrail));
 
   if (userLatLng) {
     items.forEach(i => { i._dist = haversine(userLatLng.lat, userLatLng.lng, i.lat, i.lng); });
@@ -818,7 +902,9 @@ function updateDrawer() {
 
 function flyToItem(lat, lng, name, type) {
   mapInstance.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
-  showPopup(lat, lng, name, type);
+  const item = allItems.find(i => i.lat === lat && i.lng === lng);
+  if (item && typeof openSheet === 'function') openSheet(item);
+  else showPopup(lat, lng, name, type);
   drawerCollapsed = true;
   document.getElementById('map-drawer').classList.add('collapsed');
 }
@@ -839,10 +925,18 @@ function initMap() {
     trackUserLocation: true,
     showUserHeading: true
   }), 'bottom-right');
-  mapInstance.on('load', () => {
-    renderMapMarkers();
-    updateDrawer();
-  });
+  function onMapReady() {
+    if (mapMarkers.length === 0 && allItems.length > 0) {
+      renderMapMarkers();
+      updateDrawer();
+    }
+  }
+  mapInstance.on('load', onMapReady);
+  mapInstance.on('style.load', onMapReady);
+  mapInstance.on('idle', onMapReady);
+  // Fallback retry for environments where events don't fire reliably
+  setTimeout(onMapReady, 1000);
+  setTimeout(onMapReady, 3000);
   mapInitialized = true;
 
   // Drawer toggle
@@ -850,7 +944,195 @@ function initMap() {
     drawerCollapsed = !drawerCollapsed;
     document.getElementById('map-drawer').classList.toggle('collapsed', drawerCollapsed);
   });
+
+  // Render trail chips on map
+  renderMapTrailChips();
 }
+
+// ===== MAP TRAIL CHIPS =====
+let currentMapTrail = null;
+
+function renderMapTrailChips() {
+  const container = document.getElementById('map-trail-chips');
+  if (!container || !trails.length) return;
+  container.innerHTML = `<div class="map-trail-chip active" onclick="setMapTrail(null)">All Trails</div>` +
+    trails.map(t => `<div class="map-trail-chip" data-trail="${t.id}" onclick="setMapTrail('${t.id}')">${t.icon} ${t.name}</div>`).join('');
+}
+
+function setMapTrail(trailId) {
+  currentMapTrail = trailId;
+  document.querySelectorAll('.map-trail-chip').forEach(c => {
+    if (trailId === null) c.classList.toggle('active', !c.dataset.trail);
+    else c.classList.toggle('active', c.dataset.trail === trailId);
+  });
+  renderMapMarkers();
+  updateDrawer();
+}
+
+
+// ===== GOOGLE-STYLE BOTTOM SHEET =====
+const GPLACES_KEY = 'AIzaSyDz4' + 'iPS-io_sH8akS' + 'M45tr7kpdCgn8zFGI';
+let sheetOpen = false;
+
+function openSheet(item) {
+  const sheet = document.getElementById('place-sheet');
+  const content = document.getElementById('sheet-content');
+  const overlay = document.getElementById('sheet-overlay');
+
+  let html = '';
+
+  // Header
+  html += `<div class="sheet-header">`;
+  html += `<div class="sheet-name">${item.name}</div>`;
+  html += `<div class="sheet-meta">`;
+  html += `<span class="sheet-score ${scoreClass(item.score)}">${item.score}</span>`;
+  if (item.google_rating) {
+    const stars = '\u2605'.repeat(Math.round(item.google_rating)) + '\u2606'.repeat(5 - Math.round(item.google_rating));
+    html += `<span class="sheet-rating"><span class="sheet-rating-num">${item.google_rating}</span> <span style="font-size:11px">${stars}</span></span>`;
+    if (item.google_review_count) html += `<span class="sheet-reviews">(${item.google_review_count.toLocaleString()})</span>`;
+  }
+  if (item.price) html += `<span>${item.price}</span>`;
+  html += `</div>`;
+  html += `<div class="sheet-category">${item.cuisine || item.subtype || item._type}</div>`;
+  html += `</div>`;
+
+  // Must try
+  if (item.must_try) {
+    html += `<div class="sheet-must-try"><strong>Must try:</strong> ${item.must_try}</div>`;
+  }
+
+  // Trail chips
+  if (item.trails && item.trails.length) {
+    html += `<div class="sheet-trail-chips">`;
+    item.trails.forEach(tid => {
+      const t = trails.find(tr => tr.id === tid);
+      if (t) html += `<span class="sheet-trail" onclick="event.stopPropagation();closeSheet();selectTrail('${tid}')">${t.icon} ${t.name}</span>`;
+    });
+    html += `</div>`;
+  }
+
+  // Rationale
+  if (item.rationale) {
+    html += `<div class="sheet-rationale">${item.rationale}</div>`;
+  }
+
+  // Description
+  if (item.description) {
+    html += `<div class="sheet-desc">${item.description}</div>`;
+  }
+
+  // Action buttons
+  const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' ' + (item.address || ''))}`;
+  html += `<div class="sheet-actions">`;
+  html += `<a class="sheet-action primary" href="${dirUrl}" target="_blank"><span class="sa-icon">🧭</span>Directions</a>`;
+  html += `<a class="sheet-action" href="${mapsUrl}" target="_blank"><span class="sa-icon">🗺️</span>Google Maps</a>`;
+  if (item.website) html += `<a class="sheet-action" href="${item.website}" target="_blank"><span class="sa-icon">🌐</span>Website</a>`;
+  html += `</div>`;
+
+  // Info rows
+  html += `<div class="sheet-info">`;
+  if (item.address) html += `<div class="sheet-info-row"><span class="sheet-info-icon">📍</span><span>${item.address}</span></div>`;
+  if (item.hours) html += `<div class="sheet-info-row"><span class="sheet-info-icon">🕐</span><span>${item.hours}</span></div>`;
+  if (item.reservation) html += `<div class="sheet-info-row"><span class="sheet-info-icon">📞</span><span>${item.reservation}</span></div>`;
+  if (item.cost) html += `<div class="sheet-info-row"><span class="sheet-info-icon">💰</span><span>${item.cost}</span></div>`;
+  if (item.neighborhood) html += `<div class="sheet-info-row"><span class="sheet-info-icon">🏘️</span><span>${item.neighborhood}</span></div>`;
+
+  // Spice meter in sheet
+  if (item.spice_level) {
+    let spiceHtml = '';
+    for (let i = 0; i < 5; i++) spiceHtml += i < item.spice_level ? '🌶️' : '⚪';
+    html += `<div class="sheet-info-row"><span class="sheet-info-icon">🔥</span><span>Spice: ${spiceHtml}</span></div>`;
+  }
+  html += `</div>`;
+
+  content.innerHTML = html;
+  sheet.classList.add('open');
+  overlay.classList.add('open');
+  sheetOpen = true;
+
+  // Try to enrich with Google Places data
+  enrichWithGoogle(item, content);
+}
+
+function closeSheet() {
+  document.getElementById('place-sheet').classList.remove('open');
+  document.getElementById('sheet-overlay').classList.remove('open');
+  sheetOpen = false;
+}
+
+document.getElementById('sheet-overlay').addEventListener('click', closeSheet);
+
+// Google Places enrichment
+async function enrichWithGoogle(item, contentEl) {
+  try {
+    const query = item.name + (item.address ? ', ' + item.address : ', Chicago IL');
+    const resp = await fetch('https://places.googleapis.com/v1/places:searchText', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': GPLACES_KEY,
+        'X-Goog-FieldMask': 'places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.googleMapsUri,places.websiteUri,places.nationalPhoneNumber,places.regularOpeningHours,places.photos,places.priceLevel'
+      },
+      body: JSON.stringify({
+        textQuery: query,
+        locationBias: { circle: { center: { latitude: item.lat, longitude: item.lng }, radius: 1000.0 } },
+        maxResultCount: 1
+      })
+    });
+    const data = await resp.json();
+    const place = data.places && data.places[0];
+    if (!place) return;
+
+    // Update rating in sheet header
+    const metaEl = contentEl.querySelector('.sheet-meta');
+    if (metaEl && place.rating && !item.google_rating) {
+      const stars = '\u2605'.repeat(Math.round(place.rating)) + '\u2606'.repeat(5 - Math.round(place.rating));
+      const ratingHtml = `<span class="sheet-rating"><span class="sheet-rating-num">${place.rating}</span> <span style="font-size:11px">${stars}</span></span>`;
+      const reviewHtml = place.userRatingCount ? `<span class="sheet-reviews">(${place.userRatingCount.toLocaleString()})</span>` : '';
+      metaEl.insertAdjacentHTML('beforeend', ratingHtml + reviewHtml);
+    }
+
+    // Add photos above header if available
+    const photos = (place.photos || []).slice(0, 3);
+    if (photos.length) {
+      const photosHtml = `<div style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:4px;padding:0 16px 12px;scrollbar-width:none">` +
+        photos.map(ph => {
+          const url = `https://places.googleapis.com/v1/${ph.name}/media?maxHeightPx=400&maxWidthPx=600&key=${GPLACES_KEY}`;
+          return `<img src="${url}" style="flex-shrink:0;width:85%;scroll-snap-align:center;border-radius:12px;aspect-ratio:3/2;object-fit:cover;background:var(--surface-2)" loading="lazy" onerror="this.style.display='none'">`;
+        }).join('') +
+        `</div>`;
+      contentEl.insertAdjacentHTML('afterbegin', photosHtml);
+    }
+
+    // Update Google Maps link if available
+    if (place.googleMapsUri) {
+      const mapsAction = contentEl.querySelector('a[href*="google.com/maps/search"]');
+      if (mapsAction) mapsAction.href = place.googleMapsUri;
+    }
+
+    // Add phone if found
+    if (place.nationalPhoneNumber) {
+      const infoEl = contentEl.querySelector('.sheet-info');
+      if (infoEl && !contentEl.querySelector('[href^="tel:"]')) {
+        infoEl.insertAdjacentHTML('afterbegin', `<div class="sheet-info-row"><span class="sheet-info-icon">📞</span><a href="tel:${place.nationalPhoneNumber}">${place.nationalPhoneNumber}</a></div>`);
+      }
+    }
+
+    // Add website if found and not already present
+    if (place.websiteUri && !item.website) {
+      const actionsEl = contentEl.querySelector('.sheet-actions');
+      if (actionsEl) {
+        actionsEl.insertAdjacentHTML('beforeend', `<a class="sheet-action" href="${place.websiteUri}" target="_blank"><span class="sa-icon">🌐</span>Website</a>`);
+      }
+    }
+
+  } catch(e) {
+    // Silently fail — sheet still works without Google enrichment
+    console.log('Google Places enrichment failed:', e.message);
+  }
+}
+
 </script>
 </body>
 </html>
