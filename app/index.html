@@ -442,6 +442,7 @@ body{display:flex;flex-direction:column;position:relative}
       <div class="app-title">🔥 Chicago Explorer</div>
       <div class="app-subtitle">Nikki's off-beat eats & adventures guide</div>
     </div>
+    <button onclick="showWelcome()" style="border:none;background:rgba(255,255,255,0.06);color:var(--text2);width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0" title="About this app">?</button>
   </div>
 </div>
 
@@ -535,6 +536,10 @@ function dismissWelcome() {
   const app = document.getElementById('main-app');
   app.style.display = 'flex';
   localStorage.setItem('chicago_welcomed', '1');
+}
+function showWelcome() {
+  document.getElementById('welcome-screen').style.display = 'flex';
+  document.getElementById('main-app').style.display = 'none';
 }
 if (localStorage.getItem('chicago_welcomed')) {
   document.getElementById('welcome-screen').style.display = 'none';
