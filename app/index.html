@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f172a">
+<title>Chicago Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --surface-0:#0f172a;--surface-1:#141c2e;--surface-2:#182032;--surface-3:#1e293b;
+  --surface-glass:rgba(30,41,59,0.75);
+  --bg:var(--surface-0);
+  --border:rgba(255,255,255,0.1);--border-subtle:rgba(255,255,255,0.06);
+  --blue:#60a5fa;--green:#34d399;--amber:#fbbf24;--red:#f87171;--purple:#a855f7;
+  --orange:#fb923c;--pink:#f472b6;--teal:#2dd4bf;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --radius:16px;--radius-sm:8px;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--text);background:var(--bg);
+  -webkit-tap-highlight-color:transparent;
+}
+body::before{
+  content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(96,165,250,0.06) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(251,146,60,0.04) 0%,transparent 50%);
+  pointer-events:none;z-index:0;
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{display:flex;flex-direction:column;position:relative}
+.safe-top{height:env(safe-area-inset-top,0px);background:var(--bg)}
+
+/* Header */
+.header{
+  padding:14px 16px 10px;background:var(--bg);position:relative;z-index:10;
+  border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.header-top{display:flex;justify-content:space-between;align-items:center}
+.app-title{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.app-subtitle{font-size:11px;color:var(--text3);font-weight:500;margin-top:2px}
+.header-right{display:flex;gap:8px;align-items:center}
+
+/* Sort controls */
+.sort-bar{
+  display:flex;gap:6px;padding:8px 16px;overflow-x:auto;scrollbar-width:none;flex-shrink:0;
+  border-bottom:1px solid var(--border-subtle);
+}
+.sort-bar::-webkit-scrollbar{display:none}
+.sort-chip{
+  flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;
+  background:var(--surface-1);border:1px solid var(--border-subtle);
+  white-space:nowrap;cursor:pointer;transition:all .2s;color:var(--text2);
+}
+.sort-chip.active{border-color:var(--orange);color:var(--orange);background:rgba(251,146,60,0.1)}
+
+/* Filter chips */
+.filter-bar{
+  display:flex;gap:6px;padding:6px 16px 8px;overflow-x:auto;scrollbar-width:none;flex-shrink:0;
+}
+.filter-bar::-webkit-scrollbar{display:none}
+.filter-chip{
+  flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:10px;font-weight:600;
+  background:var(--surface-1);border:1px solid var(--border-subtle);
+  white-space:nowrap;cursor:pointer;transition:all .2s;color:var(--text2);
+  text-transform:uppercase;letter-spacing:0.5px;
+}
+.filter-chip.active{border-color:var(--blue);color:var(--blue);background:rgba(96,165,250,0.1)}
+
+/* Main tabs */
+.tab-bar{
+  display:flex;background:var(--surface-0);border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.tab-btn{
+  flex:1;padding:10px;border:none;background:none;color:var(--text3);
+  font-size:12px;font-weight:600;cursor:pointer;position:relative;
+  font-family:inherit;transition:color .2s;
+}
+.tab-btn.active{color:var(--text)}
+.tab-btn.active::after{
+  content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;
+  background:var(--orange);border-radius:2px;
+}
+
+/* Content area */
+.content{flex:1;overflow:hidden;position:relative}
+.view{display:none;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.view.active{display:block}
+.list-view{padding:12px 16px 100px}
+
+/* Cards */
+.place-card{
+  background:var(--surface-glass);
+  backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);
+  border:1px solid var(--border);border-top-color:rgba(255,255,255,0.12);
+  border-radius:var(--radius);padding:14px;margin-bottom:10px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.15);cursor:pointer;
+  transition:transform 150ms cubic-bezier(0.2,0,0,1),background 150ms ease;
+  opacity:0;transform:translateY(12px);animation:card-enter .3s cubic-bezier(0.2,0,0,1) forwards;
+}
+.place-card:nth-child(2){animation-delay:40ms}
+.place-card:nth-child(3){animation-delay:80ms}
+.place-card:nth-child(4){animation-delay:120ms}
+.place-card:nth-child(5){animation-delay:160ms}
+.place-card:nth-child(6){animation-delay:200ms}
+.place-card:nth-child(7){animation-delay:240ms}
+.place-card:nth-child(8){animation-delay:280ms}
+@keyframes card-enter{to{opacity:1;transform:translateY(0)}}
+.place-card:active{transform:scale(0.98);background:var(--surface-2)}
+
+.card-top{display:flex;align-items:flex-start;gap:10px}
+.card-icon{
+  width:40px;height:40px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.card-icon.restaurant{background:rgba(244,114,182,0.15)}
+.card-icon.activity{background:rgba(251,146,60,0.15)}
+.card-main{flex:1;min-width:0}
+.card-name{font-size:14px;font-weight:700;line-height:1.3}
+.card-cuisine{font-size:11px;color:var(--text2);margin-top:2px}
+
+/* Score badge */
+.score-badge{
+  flex-shrink:0;min-width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;
+}
+.score-high{background:rgba(52,211,153,0.15);color:var(--green)}
+.score-mid{background:rgba(251,191,36,0.15);color:var(--amber)}
+.score-low{background:rgba(148,163,184,0.15);color:var(--text2)}
+
+/* Card meta row */
+.card-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;font-size:11px;color:var(--text2)}
+.meta-item{display:flex;align-items:center;gap:3px}
+.card-dist{color:var(--blue);font-weight:600}
+
+/* Tags */
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.tag{
+  font-size:9px;padding:2px 8px;border-radius:10px;font-weight:600;
+  background:rgba(255,255,255,0.06);color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;
+}
+.tag.bib{background:rgba(251,191,36,0.12);color:var(--amber)}
+.tag.michelin{background:rgba(220,38,38,0.12);color:var(--red)}
+.tag.free{background:rgba(52,211,153,0.1);color:var(--green)}
+.tag.spicy{background:rgba(251,146,60,0.12);color:var(--orange)}
+
+/* Expanded details */
+.card-expanded{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-subtle)}
+.place-card.expanded .card-expanded{display:block}
+.card-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px}
+.card-rationale{font-size:12px;color:var(--text);line-height:1.5;margin-bottom:10px;font-style:italic;padding:10px;background:rgba(251,146,60,0.06);border-radius:var(--radius-sm);border-left:3px solid var(--orange)}
+.card-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.info-item{font-size:11px;color:var(--text2)}
+.info-label{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:2px}
+.card-actions{display:flex;gap:8px;margin-top:8px}
+.action-btn{
+  font-size:11px;padding:8px 14px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:var(--surface-1);
+  color:var(--text);cursor:pointer;font-weight:600;font-family:inherit;
+  transition:background .15s;
+}
+.action-btn:active{background:var(--surface-2)}
+.action-btn.primary{background:rgba(96,165,250,0.15);border-color:rgba(96,165,250,0.3);color:var(--blue)}
+.action-btn.map-btn{background:rgba(52,211,153,0.15);border-color:rgba(52,211,153,0.3);color:var(--green)}
+
+/* Spice meter */
+.spice-meter{display:flex;gap:2px}
+.spice-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.1)}
+.spice-dot.active{background:var(--red)}
+
+/* Map view */
+#mapbox-map{width:100%;height:100%}
+.map-view{position:relative}
+.map-marker{
+  width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:16px;cursor:pointer;transition:transform .15s;
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);border:2px solid rgba(255,255,255,0.2);
+}
+.map-marker:hover{transform:scale(1.15)}
+.map-marker.restaurant{background:#be185d}
+.map-marker.activity{background:#c2410c}
+.mapboxgl-popup-content{
+  background:var(--surface-3)!important;color:var(--text)!important;
+  border-radius:var(--radius-sm)!important;padding:12px!important;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4)!important;max-width:240px!important;
+}
+.mapboxgl-popup-tip{border-top-color:var(--surface-3)!important}
+.mapboxgl-popup-close-button{color:var(--text2)!important;font-size:18px!important;right:6px!important;top:4px!important}
+.mapboxgl-ctrl-geolocate{background:var(--surface-3)!important;color:var(--text)!important;border:1px solid var(--border)!important}
+.mapboxgl-ctrl-geolocate:hover{background:var(--surface-2)!important}
+.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active{color:var(--blue)!important}
+.mapboxgl-user-location-dot,.mapboxgl-user-location-dot::before{background-color:var(--blue)!important}
+.mapboxgl-user-location-accuracy-circle{background-color:rgba(96,165,250,0.15)!important}
+.popup-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.popup-score{font-size:11px;font-weight:700;margin-bottom:4px}
+.popup-score.high{color:var(--green)}
+.popup-score.mid{color:var(--amber)}
+.popup-meta{font-size:11px;color:var(--text2);margin-bottom:6px}
+.popup-dir{font-size:11px;color:var(--blue);text-decoration:none;font-weight:600}
+.popup-dir:hover{text-decoration:underline}
+
+/* Map drawer */
+.map-drawer{
+  position:absolute;bottom:0;left:0;right:0;z-index:5;
+  background:var(--surface-1);border-top:1px solid var(--border);
+  border-top-left-radius:16px;border-top-right-radius:16px;
+  max-height:45%;transition:transform .3s cubic-bezier(.4,0,.2,1);
+}
+.map-drawer.collapsed{transform:translateY(calc(100% - 44px))}
+.drawer-handle{
+  display:flex;align-items:center;justify-content:center;padding:12px;cursor:pointer;
+}
+.drawer-handle-bar{width:36px;height:4px;border-radius:2px;background:var(--text3)}
+.drawer-header{display:flex;justify-content:space-between;align-items:center;padding:0 16px 8px}
+.drawer-title{font-size:12px;font-weight:600;color:var(--text2)}
+.drawer-count{font-size:11px;color:var(--text3)}
+.drawer-list{overflow-y:auto;max-height:calc(45vh - 80px);padding:0 8px 16px}
+.drawer-item{
+  display:flex;align-items:center;gap:10px;padding:10px 8px;
+  border-radius:var(--radius-sm);cursor:pointer;transition:background .15s;
+}
+.drawer-item:active{background:var(--surface-2)}
+.drawer-item-icon{
+  width:32px;height:32px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+}
+.drawer-item-icon.restaurant{background:rgba(244,114,182,0.15)}
+.drawer-item-icon.activity{background:rgba(251,146,60,0.15)}
+.drawer-item-info{flex:1;min-width:0}
+.drawer-item-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.drawer-item-meta{font-size:11px;color:var(--text2)}
+.drawer-item-score{
+  font-size:12px;font-weight:800;flex-shrink:0;
+}
+.drawer-item-score.high{color:var(--green)}
+.drawer-item-score.mid{color:var(--amber)}
+.drawer-item-dist{font-size:10px;color:var(--blue);font-weight:600;flex-shrink:0;margin-left:4px}
+
+/* Map filter chips */
+.map-filters{
+  position:absolute;top:8px;left:8px;right:8px;z-index:5;
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+}
+.map-filters::-webkit-scrollbar{display:none}
+.map-chip{
+  flex-shrink:0;padding:6px 12px;border-radius:20px;font-size:10px;font-weight:600;
+  background:var(--surface-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);color:var(--text2);cursor:pointer;
+  text-transform:uppercase;letter-spacing:0.5px;
+}
+.map-chip.active{border-color:var(--orange);color:var(--orange);background:rgba(251,146,60,0.15)}
+
+/* Empty state */
+.empty-state{text-align:center;padding:40px 20px;color:var(--text3);font-size:13px}
+
+/* Bottom safe area */
+.safe-bottom{height:env(safe-area-inset-bottom,0px);background:var(--bg);flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="safe-top"></div>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="app-title">🔥 Chicago Explorer</div>
+      <div class="app-subtitle">Off-beat eats & adventures — Knipmeyer siblings edition</div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="list" onclick="switchTab('list')">📋 Discover</button>
+  <button class="tab-btn" data-tab="map" onclick="switchTab('map')">🗺️ Map</button>
+</div>
+
+<div class="sort-bar" id="sort-bar">
+  <div class="sort-chip active" data-sort="score" onclick="setSort('score')">⭐ Top Scored</div>
+  <div class="sort-chip" data-sort="nearest" onclick="setSort('nearest')">📍 Nearest</div>
+  <div class="sort-chip" data-sort="spicy" onclick="setSort('spicy')">🌶️ Spiciest</div>
+  <div class="sort-chip" data-sort="budget" onclick="setSort('budget')">💰 Budget First</div>
+  <div class="sort-chip" data-sort="adventure" onclick="setSort('adventure')">🧭 Most Adventurous</div>
+  <div class="sort-chip" data-sort="unique" onclick="setSort('unique')">🦄 Can't Get Downstate</div>
+</div>
+
+<div class="filter-bar" id="filter-bar">
+  <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">All</div>
+  <div class="filter-chip" data-filter="restaurant" onclick="setFilter('restaurant')">🍽️ Restaurants</div>
+  <div class="filter-chip" data-filter="activity" onclick="setFilter('activity')">🏛️ Activities</div>
+  <div class="filter-chip" data-filter="neighborhood-crawl" onclick="setFilter('neighborhood-crawl')">🚶 Neighborhood Crawls</div>
+  <div class="filter-chip" data-filter="chef-driven" onclick="setFilter('chef-driven')">👨‍🍳 Chef-Driven</div>
+  <div class="filter-chip" data-filter="bib-gourmand" onclick="setFilter('bib-gourmand')">⭐ Bib Gourmand</div>
+  <div class="filter-chip" data-filter="free" onclick="setFilter('free')">🆓 Free</div>
+</div>
+
+<div class="content">
+  <div class="view active" id="view-list">
+    <div class="list-view" id="card-list"></div>
+  </div>
+  <div class="view map-view" id="view-map">
+    <div class="map-filters" id="map-filters">
+      <div class="map-chip active" data-filter="all" onclick="setMapFilter('all')">All</div>
+      <div class="map-chip" data-filter="restaurant" onclick="setMapFilter('restaurant')">Restaurants</div>
+      <div class="map-chip" data-filter="activity" onclick="setMapFilter('activity')">Activities</div>
+    </div>
+    <div id="mapbox-map"></div>
+    <div class="map-drawer" id="map-drawer">
+      <div class="drawer-handle" id="map-drawer-handle"><div class="drawer-handle-bar"></div></div>
+      <div class="drawer-header">
+        <span class="drawer-title">Places</span>
+        <span class="drawer-count" id="drawer-count"></span>
+      </div>
+      <div class="drawer-list" id="map-drawer-list"></div>
+    </div>
+  </div>
+</div>
+
+<div class="safe-bottom"></div>
+
+<script src="config.js"></script>
+<script>
+// Token loaded from config.js (gitignored) or URL param ?token=...
+const MAPBOX_TOKEN = window.MAPBOX_CONFIG?.token || new URLSearchParams(location.search).get('token') || '';
+let DATA = null;
+let allItems = [];
+let currentSort = 'score';
+let currentFilter = 'all';
+let currentMapFilter = 'all';
+let userLatLng = null;
+let mapInstance = null;
+let mapInitialized = false;
+let mapMarkers = [];
+let mapPopup = null;
+let drawerCollapsed = false;
+
+// Track user location
+if ('geolocation' in navigator) {
+  navigator.geolocation.watchPosition(pos => {
+    userLatLng = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+    if (currentSort === 'nearest') renderList();
+    if (mapInitialized) updateDrawer();
+  }, () => {}, { enableHighAccuracy: true });
+}
+
+// Load data
+fetch('chicago_data.json')
+  .then(r => r.json())
+  .then(data => {
+    DATA = data;
+    // Merge restaurants and activities into unified list
+    allItems = [];
+    data.restaurants.forEach(r => {
+      allItems.push({ ...r, _type: 'restaurant', _icon: '🍽️' });
+    });
+    data.activities.forEach(a => {
+      allItems.push({ ...a, _type: 'activity', _icon: a.type === 'neighborhood-crawl' ? '🚶' : a.type === 'outdoor-adventure' ? '🏞️' : a.type === 'offbeat-museum' ? '🏛️' : a.type === 'market' ? '🛒' : '🎨' });
+    });
+    renderList();
+  });
+
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function formatDist(km) {
+  const mi = km * 0.621371;
+  if (mi < 0.1) return Math.round(mi * 5280) + ' ft';
+  return mi.toFixed(1) + ' mi';
+}
+
+function getFiltered() {
+  let items = [...allItems];
+  if (currentFilter === 'all') return items;
+  if (currentFilter === 'restaurant') return items.filter(i => i._type === 'restaurant');
+  if (currentFilter === 'activity') return items.filter(i => i._type === 'activity');
+  if (currentFilter === 'neighborhood-crawl') return items.filter(i => i.type === 'neighborhood-crawl' || (i.tags && i.tags.includes('neighborhood-crawl')));
+  if (currentFilter === 'chef-driven') return items.filter(i => i.subtype === 'Chef-driven' || i.subtype === 'Elevated');
+  if (currentFilter === 'bib-gourmand') return items.filter(i => i.tags && i.tags.some(t => t.includes('bib')));
+  if (currentFilter === 'free') return items.filter(i => i.cost === 'Free' || i.cost === 'Free entry' || i.cost === 'Free (food separate)');
+  return items;
+}
+
+function getSorted(items) {
+  // Calculate distances
+  if (userLatLng) {
+    items.forEach(i => {
+      i._dist = haversine(userLatLng.lat, userLatLng.lng, i.lat, i.lng);
+    });
+  }
+
+  switch (currentSort) {
+    case 'score':
+      return items.sort((a, b) => b.score - a.score);
+    case 'nearest':
+      if (!userLatLng) return items.sort((a, b) => b.score - a.score);
+      return items.sort((a, b) => a._dist - b._dist);
+    case 'spicy':
+      return items.sort((a, b) => (b.spice_level || 0) - (a.spice_level || 0) || b.score - a.score);
+    case 'budget':
+      return items.sort((a, b) => (a.price_avg || 0) - (b.price_avg || 0) || b.score - a.score);
+    case 'adventure':
+      return items.sort((a, b) => (b.adventurousness || 0) - (a.adventurousness || 0) || b.score - a.score);
+    case 'unique':
+      return items.sort((a, b) => (b.cant_get_downstate || 0) - (a.cant_get_downstate || 0) || b.score - a.score);
+    default:
+      return items.sort((a, b) => b.score - a.score);
+  }
+}
+
+function scoreClass(s) { return s >= 90 ? 'high' : s >= 80 ? 'mid' : 'low'; }
+
+function renderSpice(level) {
+  if (!level && level !== 0) return '';
+  let html = '<div class="spice-meter">';
+  for (let i = 0; i < 5; i++) {
+    html += `<div class="spice-dot${i < level ? ' active' : ''}"></div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function tagClass(tag) {
+  if (tag.includes('bib')) return 'bib';
+  if (tag.includes('michelin')) return 'michelin';
+  if (tag === 'free') return 'free';
+  if (tag.includes('spicy') || tag.includes('mala')) return 'spicy';
+  return '';
+}
+
+function renderList() {
+  const list = document.getElementById('card-list');
+  const items = getSorted(getFiltered());
+
+  if (items.length === 0) {
+    list.innerHTML = '<div class="empty-state">No places match your filters</div>';
+    return;
+  }
+
+  list.innerHTML = items.map((item, idx) => {
+    const isRestaurant = item._type === 'restaurant';
+    const distHtml = item._dist != null ? `<span class="meta-item card-dist">📍 ${formatDist(item._dist)}</span>` : '';
+    const priceHtml = item.price ? `<span class="meta-item">${item.price}</span>` : '';
+    const costHtml = item.cost ? `<span class="meta-item">${item.cost}</span>` : '';
+    const durationHtml = item.duration ? `<span class="meta-item">⏱ ${item.duration}</span>` : '';
+    const neighborhoodHtml = item.neighborhood ? `<span class="meta-item">📍 ${item.neighborhood}</span>` : '';
+    const spiceHtml = item.spice_level != null ? renderSpice(item.spice_level) : '';
+
+    const tagsHtml = (item.tags || []).slice(0, 5).map(t =>
+      `<span class="tag ${tagClass(t)}">${t.replace(/-/g, ' ')}</span>`
+    ).join('');
+
+    const cuisineOrType = isRestaurant
+      ? `${item.cuisine}${item.subtype ? ' · ' + item.subtype : ''}`
+      : item.type ? item.type.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : '';
+
+    // Expanded info grid
+    const hoursHtml = item.hours ? `<div class="info-item"><div class="info-label">Hours</div>${item.hours}</div>` : '';
+    const resHtml = item.reservation ? `<div class="info-item"><div class="info-label">Reservation</div>${item.reservation}</div>` : '';
+    const pairingHtml = item.pairing ? `<div class="info-item"><div class="info-label">Pair with</div>${item.pairing}</div>` : '';
+    const addressHtml = item.address ? `<div class="info-item"><div class="info-label">Address</div>${item.address}</div>` : '';
+
+    return `<div class="place-card" data-idx="${idx}" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="card-icon ${item._type}">${item._icon}</div>
+        <div class="card-main">
+          <div class="card-name">${item.name}</div>
+          <div class="card-cuisine">${cuisineOrType}</div>
+        </div>
+        <div class="score-badge score-${scoreClass(item.score)}">${item.score}</div>
+      </div>
+      <div class="card-meta">
+        ${neighborhoodHtml}${priceHtml}${costHtml}${durationHtml}${distHtml}
+        ${spiceHtml}
+      </div>
+      <div class="card-tags">${tagsHtml}</div>
+      <div class="card-expanded">
+        <div class="card-desc">${item.description || ''}</div>
+        <div class="card-rationale">${item.rationale || ''}</div>
+        <div class="card-info-grid">
+          ${hoursHtml}${resHtml}${pairingHtml}${addressHtml}
+        </div>
+        <div class="card-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation();openDirections(${item.lat},${item.lng})">📍 Directions</button>
+          <button class="action-btn map-btn" onclick="event.stopPropagation();showOnMap(${item.lat},${item.lng},'${item.name.replace(/'/g,"\\'")}','${item._type}')">🗺️ Show on Map</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCard(el) {
+  el.classList.toggle('expanded');
+}
+
+function openDirections(lat, lng) {
+  window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+}
+
+function setSort(sort) {
+  currentSort = sort;
+  document.querySelectorAll('.sort-chip').forEach(c => c.classList.toggle('active', c.dataset.sort === sort));
+  renderList();
+}
+
+function setFilter(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.filter === filter));
+  renderList();
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + tab).classList.add('active');
+
+  // Show/hide sort and filter bars
+  document.getElementById('sort-bar').style.display = tab === 'list' ? 'flex' : 'none';
+  document.getElementById('filter-bar').style.display = tab === 'list' ? 'flex' : 'none';
+
+  if (tab === 'map') {
+    setTimeout(() => {
+      if (!mapInitialized) initMap();
+      else { mapInstance.resize(); renderMapMarkers(); updateDrawer(); }
+    }, 50);
+  }
+}
+
+function showOnMap(lat, lng, name, type) {
+  switchTab('map');
+  setTimeout(() => {
+    if (!mapInitialized) {
+      initMap();
+      mapInstance.on('load', () => {
+        mapInstance.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
+        showPopup(lat, lng, name, type);
+      });
+    } else {
+      mapInstance.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
+      showPopup(lat, lng, name, type);
+    }
+    drawerCollapsed = true;
+    document.getElementById('map-drawer').classList.add('collapsed');
+  }, 100);
+}
+
+function showPopup(lat, lng, name, type) {
+  if (mapPopup) mapPopup.remove();
+  const item = allItems.find(i => i.lat === lat && i.lng === lng);
+  const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  const scoreHtml = item ? `<div class="popup-score ${scoreClass(item.score)}">Score: ${item.score}</div>` : '';
+  const metaHtml = item ? `<div class="popup-meta">${item.neighborhood || ''} · ${item.price || item.cost || ''}</div>` : '';
+  mapPopup = new mapboxgl.Popup({ offset: 20, closeButton: true })
+    .setLngLat([lng, lat])
+    .setHTML(`<div class="popup-name">${name}</div>${scoreHtml}${metaHtml}<a class="popup-dir" href="${dirUrl}" target="_blank" rel="noopener">Directions ↗</a>`)
+    .addTo(mapInstance);
+}
+
+function createMarkerEl(type) {
+  const el = document.createElement('div');
+  el.className = 'map-marker ' + type;
+  el.textContent = type === 'restaurant' ? '🍽️' : '📍';
+  return el;
+}
+
+function clearMapMarkers() {
+  mapMarkers.forEach(m => m.marker.remove());
+  mapMarkers = [];
+  if (mapPopup) { mapPopup.remove(); mapPopup = null; }
+}
+
+function renderMapMarkers() {
+  clearMapMarkers();
+  const bounds = new mapboxgl.LngLatBounds();
+
+  allItems.forEach(item => {
+    if (currentMapFilter !== 'all' && item._type !== currentMapFilter) return;
+
+    const el = createMarkerEl(item._type);
+    const marker = new mapboxgl.Marker({ element: el })
+      .setLngLat([item.lng, item.lat])
+      .addTo(mapInstance);
+
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mapInstance.flyTo({ center: [item.lng, item.lat], zoom: 14, duration: 600 });
+      showPopup(item.lat, item.lng, item.name, item._type);
+    });
+
+    mapMarkers.push({ marker, type: item._type, el });
+    bounds.extend([item.lng, item.lat]);
+  });
+
+  if (mapMarkers.length > 0) {
+    mapInstance.fitBounds(bounds, { padding: 60, duration: 800, maxZoom: 13 });
+  }
+}
+
+function setMapFilter(filter) {
+  currentMapFilter = filter;
+  document.querySelectorAll('.map-chip').forEach(c => c.classList.toggle('active', c.dataset.filter === filter));
+  renderMapMarkers();
+  updateDrawer();
+}
+
+function updateDrawer() {
+  const list = document.getElementById('map-drawer-list');
+  const count = document.getElementById('drawer-count');
+  let items = allItems.filter(i => currentMapFilter === 'all' || i._type === currentMapFilter);
+
+  if (userLatLng) {
+    items.forEach(i => { i._dist = haversine(userLatLng.lat, userLatLng.lng, i.lat, i.lng); });
+    items.sort((a, b) => a._dist - b._dist);
+  } else {
+    items.sort((a, b) => b.score - a.score);
+  }
+
+  count.textContent = `${items.length} places`;
+
+  list.innerHTML = items.map(item => {
+    const distHtml = item._dist != null ? `<span class="drawer-item-dist">${formatDist(item._dist)}</span>` : '';
+    const meta = [item.neighborhood, item.price || item.cost].filter(Boolean).join(' · ');
+    return `<div class="drawer-item" onclick="flyToItem(${item.lat},${item.lng},'${item.name.replace(/'/g,"\\'")}','${item._type}')">
+      <div class="drawer-item-icon ${item._type}">${item._icon}</div>
+      <div class="drawer-item-info">
+        <div class="drawer-item-name">${item.name}</div>
+        <div class="drawer-item-meta">${meta}</div>
+      </div>
+      <div class="drawer-item-score ${scoreClass(item.score)}">${item.score}</div>
+      ${distHtml}
+    </div>`;
+  }).join('');
+}
+
+function flyToItem(lat, lng, name, type) {
+  mapInstance.flyTo({ center: [lng, lat], zoom: 15, duration: 800 });
+  showPopup(lat, lng, name, type);
+  drawerCollapsed = true;
+  document.getElementById('map-drawer').classList.add('collapsed');
+}
+
+function initMap() {
+  if (mapInitialized) return;
+  mapboxgl.accessToken = MAPBOX_TOKEN;
+  mapInstance = new mapboxgl.Map({
+    container: 'mapbox-map',
+    style: 'mapbox://styles/mapbox/dark-v11',
+    center: [-87.6298, 41.8781], // Chicago
+    zoom: 11,
+    attributionControl: false
+  });
+  mapInstance.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
+  mapInstance.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: { enableHighAccuracy: true },
+    trackUserLocation: true,
+    showUserHeading: true
+  }), 'bottom-right');
+  mapInstance.on('load', () => {
+    renderMapMarkers();
+    updateDrawer();
+  });
+  mapInitialized = true;
+
+  // Drawer toggle
+  document.getElementById('map-drawer-handle').addEventListener('click', () => {
+    drawerCollapsed = !drawerCollapsed;
+    document.getElementById('map-drawer').classList.toggle('collapsed', drawerCollapsed);
+  });
+}
+</script>
+</body>
+</html>
