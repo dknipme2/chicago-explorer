@@ -21,6 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Inject Mapbox token
+        run: |
+          echo "window.MAPBOX_CONFIG = { token: '${{ secrets.MAPBOX_TOKEN }}' };" > app/config.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
