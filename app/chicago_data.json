@@ -2286,6 +2286,281 @@
       "adventurousness": 3,
       "cant_get_downstate": 5,
       "website": "https://www.choosechicago.com/blog/neighborhoods-blog/devon-avenue/"
+    },
+    {
+      "name": "Nazareth Sweets",
+      "type": "restaurant",
+      "cuisine": "Palestinian Sweets",
+      "neighborhood": "North Mayfair",
+      "address": "4938 N Elston Ave, Chicago, IL 60630",
+      "lat": 41.9713,
+      "lng": -87.7334,
+      "price": "$",
+      "price_avg": 10,
+      "score": 96,
+      "must_try": "Walnut and pistachio baklava - consistently ranked #1 in Chicago",
+      "description": "Family-run Palestinian bakery that is the gold standard for baklava in Chicago. Wholesale and retail, with unbeatable freshness and prices. A medium box of 12-15 pieces runs about $10.",
+      "rationale": "Every Chicago baklava list puts Nazareth at #1. If you only visit one Middle Eastern sweets shop, this is it. Nothing fancy - just perfect baklava at absurd prices.",
+      "trails": [
+        "sweet-tooth",
+        "street-level",
+        "by-hand"
+      ],
+      "tags": [
+        "baklava",
+        "palestinian",
+        "budget-friendly",
+        "hidden-gem"
+      ],
+      "hours": "Mon-Sat 9am-7pm, Sun 10am-7pm",
+      "website": "https://www.facebook.com/nazarethsweets/",
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 5
+    },
+    {
+      "name": "Nablus Sweets",
+      "type": "restaurant",
+      "cuisine": "Palestinian Sweets",
+      "neighborhood": "Bridgeview",
+      "address": "8320 S Harlem Ave, Bridgeview, IL 60455",
+      "lat": 41.7485,
+      "lng": -87.8056,
+      "price": "$$",
+      "price_avg": 15,
+      "score": 95,
+      "must_try": "Knafeh Nabulsia - made with imported Nablus cheese, the most authentic in the Midwest",
+      "description": "Established 2008 in the heart of Little Palestine. Their signature knafeh uses cheese imported directly from Nablus, Palestine, making it arguably the most authentic version outside the Middle East.",
+      "rationale": "Bridgeview is home to the largest Palestinian-American community in the US. Nablus Sweets is the crown jewel - their knafeh is a pilgrimage-worthy experience you cannot get downstate.",
+      "trails": [
+        "sweet-tooth",
+        "by-hand"
+      ],
+      "tags": [
+        "knafeh",
+        "palestinian",
+        "bridgeview",
+        "authentic"
+      ],
+      "hours": "Mon-Fri 10am-9pm, Sat-Sun 10am-9pm",
+      "website": "https://nablussweetsil.com/",
+      "spice_level": 0,
+      "adventurousness": 4,
+      "cant_get_downstate": 5
+    },
+    {
+      "name": "Al Sham Sweets",
+      "type": "restaurant",
+      "cuisine": "Syrian Sweets",
+      "neighborhood": "Skokie",
+      "address": "4952 Dempster St, Skokie, IL 60076",
+      "lat": 42.0411,
+      "lng": -87.7417,
+      "price": "$$",
+      "price_avg": 15,
+      "score": 94,
+      "must_try": "Halawet el jibin (sweet cheese rolls in rosewater syrup) - a rare Syrian specialty",
+      "description": "Authentic Syrian sweet shop with top-quality ingredients. The halawet el jibin is a standout you will not find at most other shops - sweet cheese dough rolled with cream and soaked in rosewater syrup.",
+      "rationale": "Syrian sweets are a distinct tradition and Al Sham is the best representative in Chicagoland. Their halawet el jibin alone is worth the trip to Skokie.",
+      "trails": [
+        "sweet-tooth",
+        "trust-the-chef"
+      ],
+      "tags": [
+        "syrian",
+        "halawet-el-jibin",
+        "knafeh",
+        "baklava"
+      ],
+      "hours": "Tue-Sat 11:30am-9pm, Sun 11:30am-8pm, Mon CLOSED",
+      "website": "https://www.alshamsweets.com/",
+      "spice_level": 0,
+      "adventurousness": 4,
+      "cant_get_downstate": 5
+    },
+    {
+      "name": "Habibah Sweets USA",
+      "type": "restaurant",
+      "cuisine": "Jordanian Sweets",
+      "neighborhood": "Bridgeview",
+      "address": "8429 S Harlem Ave, Bridgeview, IL 60455",
+      "lat": 41.7478,
+      "lng": -87.8056,
+      "price": "$$",
+      "price_avg": 15,
+      "score": 93,
+      "must_try": "Jordanian-style kunafa - the signature of the legendary Amman original",
+      "description": "US branch of the legendary Habibah Sweets from downtown Amman, Jordan - one of the most famous sweets brands in the entire Middle East. Hot kunafa, oriental sweets, and traditional pastries.",
+      "rationale": "If you know Habibah from Amman, you know this is the real deal. A legendary Middle Eastern brand now in Chicago Little Palestine corridor. Iconic.",
+      "trails": [
+        "sweet-tooth",
+        "by-hand"
+      ],
+      "tags": [
+        "jordanian",
+        "kunafa",
+        "bridgeview",
+        "legendary-brand"
+      ],
+      "hours": "Daily 10am-10pm",
+      "website": "https://habibahsweetsusa.com/",
+      "spice_level": 0,
+      "adventurousness": 4,
+      "cant_get_downstate": 5
+    },
+    {
+      "name": "Yakup Bey Turkish Delight",
+      "type": "shop",
+      "subtype": "shop",
+      "cuisine": "Turkish Sweets",
+      "neighborhood": "Dunning",
+      "address": "3707 N Harlem Ave, Chicago, IL 60634",
+      "lat": 41.9489,
+      "lng": -87.8065,
+      "price": "$$",
+      "price_avg": 12,
+      "score": 93,
+      "must_try": "Turkish delight (lokum) in dozens of varieties - imported directly from Turkey",
+      "description": "The ONLY US location of the century-old Yakup Bey company, which has 20+ cafes across Europe and Asia. A technicolor wonderland of imported Turkish delight, baklava, chocolates, dried fruits, spices, and nuts.",
+      "rationale": "A true hidden gem on the Northwest Side. Century-old Turkish brand with their only American outpost - varieties of lokum you literally cannot find anywhere else in the country.",
+      "trails": [
+        "sweet-tooth",
+        "curiosity-cabinet",
+        "snack-attack"
+      ],
+      "tags": [
+        "turkish-delight",
+        "imported",
+        "hidden-gem",
+        "only-us-location"
+      ],
+      "hours": "Daily 9am-10:30pm",
+      "website": "https://www.facebook.com/yakupbeyturkishdelight/",
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 5
+    },
+    {
+      "name": "Oud Coffee & Cafe",
+      "type": "restaurant",
+      "cuisine": "Palestinian Cafe & Sweets",
+      "neighborhood": "River North",
+      "address": "714 N Wells St, Chicago, IL 60654",
+      "lat": 41.8942,
+      "lng": -87.634,
+      "price": "$$",
+      "price_avg": 14,
+      "score": 91,
+      "must_try": "Dubai chocolate bar (dark chocolate stuffed with pistachio and crunchy knafeh) - only spot in Chicago",
+      "description": "Palestinian-owned cafe merging Middle Eastern desserts with modern cafe culture. Knafeh cake, viral Dubai chocolate bar, pistachio cheesecake, stuffed dates, and signature OUD latte with pistachio, cardamom, and mint.",
+      "rationale": "The most accessible and Instagram-worthy Middle Eastern sweets experience for downtown visitors. The Dubai chocolate bar is a viral sensation and you can only get it here.",
+      "trails": [
+        "sweet-tooth",
+        "snack-attack"
+      ],
+      "tags": [
+        "palestinian",
+        "cafe",
+        "dubai-chocolate",
+        "instagram-worthy"
+      ],
+      "hours": "Mon-Fri 7am-7pm, Sat-Sun 8am-7pm",
+      "website": "https://oudcoffee.cafe/",
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 4
+    },
+    {
+      "name": "Antepli Mediterranean Grill & Baklava",
+      "type": "restaurant",
+      "cuisine": "Turkish",
+      "neighborhood": "Albany Park",
+      "address": "4849 N Kedzie Ave, Chicago, IL 60625",
+      "lat": 41.9715,
+      "lng": -87.7084,
+      "price": "$$",
+      "price_avg": 18,
+      "score": 91,
+      "must_try": "Turkish-style baklava (lighter, crispier with lemon syrup) and hot kunefe with melting cheese",
+      "description": "Named after Gaziantep, Turkey - the baklava capital of the world. Turkish baklava here is distinctly lighter and crispier than Arabic versions, using a lemon-sugar syrup. Full restaurant plus dedicated dessert counter.",
+      "rationale": "If you have only had Arabic baklava, Turkish baklava is a revelation - lighter, crispier, tangier. Antepli is the best place to taste the difference, and their hot kunefe is an experience.",
+      "trails": [
+        "sweet-tooth",
+        "by-hand",
+        "fire-walk"
+      ],
+      "tags": [
+        "turkish",
+        "baklava",
+        "kunefe",
+        "albany-park"
+      ],
+      "hours": "Mon-Thu 10am-10pm, Fri 10am-12am, Sat-Sun 9am-12am",
+      "website": "https://anteplichicago.com/",
+      "spice_level": 2,
+      "adventurousness": 3,
+      "cant_get_downstate": 4
+    },
+    {
+      "name": "Feyrous Pastries & Groceries",
+      "type": "restaurant",
+      "cuisine": "Palestinian Bakery",
+      "neighborhood": "Albany Park",
+      "address": "4510 N Kedzie Ave, Chicago, IL 60625",
+      "lat": 41.9635,
+      "lng": -87.7084,
+      "price": "$",
+      "price_avg": 8,
+      "score": 90,
+      "must_try": "Lady finger baklava and pistachio/cashew baklava variations",
+      "description": "Beloved family-owned Palestinian bakery with a dedicated second storefront for Middle Eastern groceries. The baklava is described as tremendous with excellent prices and multiple unique variations.",
+      "rationale": "A neighborhood institution in Albany Park. The lady finger baklava and cashew variations set it apart from the usual walnut/pistachio offerings. Incredible value.",
+      "trails": [
+        "sweet-tooth",
+        "street-level",
+        "snack-attack"
+      ],
+      "tags": [
+        "palestinian",
+        "baklava",
+        "budget-friendly",
+        "albany-park"
+      ],
+      "hours": "Daily 9am-8pm",
+      "website": "https://www.facebook.com/feyrousgrocery/",
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 4
+    },
+    {
+      "name": "Seedo's Levantine Bakery",
+      "type": "restaurant",
+      "cuisine": "Modern Palestinian Bakery",
+      "neighborhood": "The Loop",
+      "address": "125 S Clark St, Chicago, IL 60603",
+      "lat": 41.8798,
+      "lng": -87.631,
+      "price": "$$",
+      "price_avg": 10,
+      "score": 90,
+      "must_try": "Basbousa coffee cake and magic halwa bars - Palestinian flavors in modern pastry form",
+      "description": "Opened December 2024 inside the Sterling Food Hall. A creative fusion bakery bringing Palestinian/Levantine flavors into Western pastry forms - pistachio croissants, lemon olive oil cake with rose and hibiscus, sticky date cake.",
+      "rationale": "The most inventive Middle Eastern bakery in Chicago. Not traditional sweets, but a brilliant modern bridge between Palestinian heritage and French pastry technique. Already a critic darling.",
+      "trails": [
+        "sweet-tooth",
+        "trust-the-chef"
+      ],
+      "tags": [
+        "palestinian",
+        "modern-fusion",
+        "bakery",
+        "loop"
+      ],
+      "hours": "Mon-Fri 8am-3pm, Closed Sat-Sun",
+      "website": "https://seedosbakery.net/",
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 4
     }
   ]
 }
