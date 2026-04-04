@@ -11,18 +11,78 @@
     }
   },
   "trails": [
-    {"id": "dumpling-universe", "name": "Dumpling Universe", "icon": "🥟", "description": "Every dumpling tradition: XLB, pierogi, momos, mandu, gyoza, varenyky"},
-    {"id": "noodle-run", "name": "Noodle Run", "icon": "🍜", "description": "Pho, ramen, hand-pulled, khao soi, naengmyeon, fresh pasta"},
-    {"id": "sweet-tooth", "name": "Sweet Tooth Mega", "icon": "🍩", "description": "Doughnuts, baklava, gelato, mochi, churros, Indian sweets, ube"},
-    {"id": "fire-walk", "name": "Fire Walk", "icon": "🔥", "description": "Spiciest dish at every stop — a heat ladder from warm to nuclear"},
-    {"id": "fermentation", "name": "Fermentation Station", "icon": "🫙", "description": "Kimchi, kombucha, pickles, funky cheese, fermented hot sauce"},
-    {"id": "by-hand", "name": "By Hand", "icon": "🤲", "description": "Foods eaten with your hands: injera, KBBQ wraps, birria, dim sum, elote"},
-    {"id": "curiosity-cabinet", "name": "Curiosity Cabinet", "icon": "🦴", "description": "Oddities, antiques, weird museums, taxidermy, outsider art"},
-    {"id": "snack-attack", "name": "Snack Attack", "icon": "🍬", "description": "Exotic snacks, international groceries, pick-n-mix, global menu"},
-    {"id": "trust-the-chef", "name": "Trust the Chef", "icon": "👨‍🍳", "description": "Let the kitchen decide — omakase mentality, tasting menus, chef's picks"},
-    {"id": "street-level", "name": "Street Level", "icon": "💵", "description": "Cash-only legends, under $15, no-frills institutions"},
-    {"id": "weekend-warriors", "name": "Weekend Warriors", "icon": "📅", "description": "Weekend-only specials, Sunday markets, Saturday brunch rituals"},
-    {"id": "free-outside", "name": "Free & Outside", "icon": "🌿", "description": "Murals, trails, conservatories, wildlife, walks — all free"}
+    {
+      "id": "dumpling-universe",
+      "name": "Dumpling Universe",
+      "icon": "🥟",
+      "description": "Every dumpling tradition: XLB, pierogi, momos, mandu, gyoza, varenyky"
+    },
+    {
+      "id": "noodle-run",
+      "name": "Noodle Run",
+      "icon": "🍜",
+      "description": "Pho, ramen, hand-pulled, khao soi, naengmyeon, fresh pasta"
+    },
+    {
+      "id": "sweet-tooth",
+      "name": "Sweet Tooth Mega",
+      "icon": "🍩",
+      "description": "Doughnuts, baklava, gelato, mochi, churros, Indian sweets, ube"
+    },
+    {
+      "id": "fire-walk",
+      "name": "Fire Walk",
+      "icon": "🔥",
+      "description": "Spiciest dish at every stop — a heat ladder from warm to nuclear"
+    },
+    {
+      "id": "fermentation",
+      "name": "Fermentation Station",
+      "icon": "🫙",
+      "description": "Kimchi, kombucha, pickles, funky cheese, fermented hot sauce"
+    },
+    {
+      "id": "by-hand",
+      "name": "By Hand",
+      "icon": "🤲",
+      "description": "Foods eaten with your hands: injera, KBBQ wraps, birria, dim sum, elote"
+    },
+    {
+      "id": "curiosity-cabinet",
+      "name": "Curiosity Cabinet",
+      "icon": "🦴",
+      "description": "Oddities, antiques, weird museums, taxidermy, outsider art"
+    },
+    {
+      "id": "snack-attack",
+      "name": "Snack Attack",
+      "icon": "🍬",
+      "description": "Exotic snacks, international groceries, pick-n-mix, global menu"
+    },
+    {
+      "id": "trust-the-chef",
+      "name": "Trust the Chef",
+      "icon": "👨‍🍳",
+      "description": "Let the kitchen decide — omakase mentality, tasting menus, chef's picks"
+    },
+    {
+      "id": "street-level",
+      "name": "Street Level",
+      "icon": "💵",
+      "description": "Cash-only legends, under $15, no-frills institutions"
+    },
+    {
+      "id": "weekend-warriors",
+      "name": "Weekend Warriors",
+      "icon": "📅",
+      "description": "Weekend-only specials, Sunday markets, Saturday brunch rituals"
+    },
+    {
+      "id": "free-outside",
+      "name": "Free & Outside",
+      "icon": "🌿",
+      "description": "Murals, trails, conservatories, wildlife, walks — all free"
+    }
   ],
   "places": [
     {
@@ -31,17 +91,31 @@
       "cuisine": "Filipino",
       "neighborhood": "Ukrainian Village",
       "address": "1001 N Winchester Ave, Chicago, IL 60622",
-      "lat": 41.8996, "lng": -87.6726,
-      "price": "$$$$", "price_avg": 85,
+      "lat": 41.8996,
+      "lng": -87.6726,
+      "price": "$$$$",
+      "price_avg": 85,
       "score": 97,
       "must_try": "Ube pancakes at brunch, or the full prix fixe dinner",
       "description": "World's only Michelin-starred Filipino restaurant. Brunch is the accessible entry — ube pancakes, longanisa, lumpia. Dinner is a prix fixe revelation.",
       "rationale": "THE reason Chicago's Filipino scene is having a moment. Nothing like this exists anywhere else on Earth.",
-      "trails": ["trust-the-chef", "sweet-tooth", "weekend-warriors"],
-      "tags": ["michelin-star", "chef-driven", "filipino", "brunch"],
+      "trails": [
+        "trust-the-chef",
+        "sweet-tooth",
+        "weekend-warriors"
+      ],
+      "tags": [
+        "michelin-star",
+        "chef-driven",
+        "filipino",
+        "brunch"
+      ],
       "hours": "Brunch: Wed-Sun 9am-2pm; Dinner: Wed-Sat 5pm-10pm",
       "reservation": "Tock (book weeks ahead)",
-      "spice_level": 2, "adventurousness": 4, "cant_get_downstate": 5
+      "spice_level": 2,
+      "adventurousness": 4,
+      "cant_get_downstate": 5,
+      "website": "https://www.kasamachicago.com/"
     },
     {
       "name": "Galit",
@@ -49,17 +123,29 @@
       "cuisine": "Modern Middle Eastern",
       "neighborhood": "Lincoln Park",
       "address": "2429 N Lincoln Ave, Chicago, IL 60614",
-      "lat": 41.9267, "lng": -87.6490,
-      "price": "$$$", "price_avg": 55,
+      "lat": 41.9267,
+      "lng": -87.649,
+      "price": "$$$",
+      "price_avg": 55,
       "score": 93,
       "must_try": "Duck kibbeh and the wood-fired pita with dips",
       "description": "Michelin-starred modern Middle Eastern. Wood-fired pita, lamb shawarma, beet hummus, duck kibbeh.",
       "rationale": "Your splurge meal. Trust the chef completely — every dish reinvents a classic.",
-      "trails": ["trust-the-chef", "by-hand"],
-      "tags": ["michelin-star", "chef-driven", "middle-eastern"],
+      "trails": [
+        "trust-the-chef",
+        "by-hand"
+      ],
+      "tags": [
+        "michelin-star",
+        "chef-driven",
+        "middle-eastern"
+      ],
       "hours": "Tue-Sat 5pm-10pm; Brunch Sun 10am-2pm",
       "reservation": "Tock",
-      "spice_level": 2, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 2,
+      "adventurousness": 3,
+      "cant_get_downstate": 4,
+      "website": "https://www.galitrestaurant.com/"
     },
     {
       "name": "HaiSous Vietnamese Kitchen",
@@ -67,17 +153,29 @@
       "cuisine": "Vietnamese",
       "neighborhood": "Pilsen",
       "address": "1800 S Carpenter St, Chicago, IL 60608",
-      "lat": 41.8577, "lng": -87.6528,
-      "price": "$$$", "price_avg": 45,
+      "lat": 41.8577,
+      "lng": -87.6528,
+      "price": "$$$",
+      "price_avg": 45,
       "score": 94,
       "must_try": "Whole roasted catfish or the bo luc lac (shaking beef)",
       "description": "Bib Gourmand Vietnamese that goes way beyond pho. Bold, precise flavors cooked for a Vietnamese audience.",
       "rationale": "Trust-the-kitchen dream. Pairs perfectly with a Pilsen mural walk.",
-      "trails": ["trust-the-chef", "fire-walk"],
-      "tags": ["bib-gourmand", "vietnamese", "chef-driven"],
+      "trails": [
+        "trust-the-chef",
+        "fire-walk"
+      ],
+      "tags": [
+        "bib-gourmand",
+        "vietnamese",
+        "chef-driven"
+      ],
       "hours": "Wed-Mon 5pm-10pm",
       "reservation": "Resy",
-      "spice_level": 3, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 3,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://www.haisous.com/"
     },
     {
       "name": "Birrieria Zaragoza",
@@ -85,17 +183,30 @@
       "cuisine": "Mexican (Regional)",
       "neighborhood": "Archer Heights",
       "address": "4852 S Pulaski Rd, Chicago, IL 60632",
-      "lat": 41.8045, "lng": -87.7233,
-      "price": "$$", "price_avg": 20,
+      "lat": 41.8045,
+      "lng": -87.7233,
+      "price": "$$",
+      "price_avg": 20,
       "score": 93,
       "must_try": "Lamb birria with consomé — dip the taco, sip the broth",
       "description": "Bib Gourmand birria specialist. One family, one dish, perfected over decades.",
       "rationale": "Food writers fly to Chicago for this. Weekend mornings are peak.",
-      "trails": ["by-hand", "street-level", "weekend-warriors"],
-      "tags": ["bib-gourmand", "mexican-regional", "birria"],
+      "trails": [
+        "by-hand",
+        "street-level",
+        "weekend-warriors"
+      ],
+      "tags": [
+        "bib-gourmand",
+        "mexican-regional",
+        "birria"
+      ],
       "hours": "Mon-Fri 9am-6pm, Sat-Sun 8am-6pm",
       "reservation": "Walk-in only",
-      "spice_level": 2, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 2,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://www.birrieriazaragoza.com/"
     },
     {
       "name": "Demera Ethiopian",
@@ -103,17 +214,32 @@
       "cuisine": "Ethiopian",
       "neighborhood": "Uptown",
       "address": "4801 N Broadway, Chicago, IL 60640",
-      "lat": 41.9683, "lng": -87.6601,
-      "price": "$$", "price_avg": 25,
+      "lat": 41.9683,
+      "lng": -87.6601,
+      "price": "$$",
+      "price_avg": 25,
       "score": 91,
       "must_try": "Demera Sampler platter — communal injera spread with 5+ stews, plus the traditional coffee ceremony",
       "description": "Full-sensory Ethiopian dining. Everything on a shared injera platter — tear off spongy bread and scoop stews with your hands. The coffee ceremony is a ritual: beans roasted tableside, ground fresh, brewed in a jebena. It's theater, flavor, and togetherness.",
       "rationale": "Ethiopian dining is a sensory experience unlike anything else — textures, communal eating, the aromas of the coffee ceremony. Near Argyle Street for a neighborhood double feature.",
-      "trails": ["by-hand", "fire-walk", "trust-the-chef"],
-      "tags": ["michelin-noted", "ethiopian", "communal", "sensory-experience", "coffee-ceremony"],
+      "trails": [
+        "by-hand",
+        "fire-walk",
+        "trust-the-chef"
+      ],
+      "tags": [
+        "michelin-noted",
+        "ethiopian",
+        "communal",
+        "sensory-experience",
+        "coffee-ceremony"
+      ],
       "hours": "Tue-Sun 11am-10pm, closed Mon",
       "reservation": "Walk-in friendly, reservations for groups",
-      "spice_level": 3, "adventurousness": 4, "cant_get_downstate": 5
+      "spice_level": 3,
+      "adventurousness": 4,
+      "cant_get_downstate": 5,
+      "website": "https://www.demerachicago.com/"
     },
     {
       "name": "Sabri Nihari",
@@ -121,17 +247,31 @@
       "cuisine": "Pakistani",
       "neighborhood": "West Ridge (Devon Ave)",
       "address": "2502 W Devon Ave, Chicago, IL 60659",
-      "lat": 41.9977, "lng": -87.6914,
-      "price": "$$", "price_avg": 18,
+      "lat": 41.9977,
+      "lng": -87.6914,
+      "price": "$$",
+      "price_avg": 18,
       "score": 92,
       "must_try": "Nihari — slow-braised beef shank, bone marrow melting into spiced gravy",
       "description": "Bib Gourmand Pakistani. The nihari might be the best $12 dish in Chicago.",
       "rationale": "Bib Gourmand at street-food prices. Devon Avenue itself is the experience.",
-      "trails": ["by-hand", "street-level", "fire-walk"],
-      "tags": ["bib-gourmand", "pakistani", "nihari", "devon-ave"],
+      "trails": [
+        "by-hand",
+        "street-level",
+        "fire-walk"
+      ],
+      "tags": [
+        "bib-gourmand",
+        "pakistani",
+        "nihari",
+        "devon-ave"
+      ],
       "hours": "Daily 11am-12am",
       "reservation": "Walk-in",
-      "spice_level": 4, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 4,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://sabrinihari.com/"
     },
     {
       "name": "The Gundis Kurdish Kitchen",
@@ -139,17 +279,31 @@
       "cuisine": "Kurdish",
       "neighborhood": "Lincoln Square",
       "address": "2909 N Clark St, Chicago, IL 60657",
-      "lat": 41.9348, "lng": -87.6435,
-      "price": "$$", "price_avg": 30,
+      "lat": 41.9348,
+      "lng": -87.6435,
+      "price": "$$",
+      "price_avg": 30,
       "score": 90,
       "must_try": "Weekend brunch — the full Kurdish breakfast spread",
       "description": "One of very few Kurdish restaurants in America. Michelin-recommended. Owners fled Iraq.",
       "rationale": "Kurdish food doesn't exist outside major metros. The story is as powerful as the food.",
-      "trails": ["trust-the-chef", "weekend-warriors", "by-hand"],
-      "tags": ["michelin-recommended", "kurdish", "brunch", "rare-cuisine"],
+      "trails": [
+        "trust-the-chef",
+        "weekend-warriors",
+        "by-hand"
+      ],
+      "tags": [
+        "michelin-recommended",
+        "kurdish",
+        "brunch",
+        "rare-cuisine"
+      ],
       "hours": "Tue-Sun 11am-9pm; Brunch Sat-Sun 10am-3pm",
       "reservation": "OpenTable",
-      "spice_level": 2, "adventurousness": 4, "cant_get_downstate": 5
+      "spice_level": 2,
+      "adventurousness": 4,
+      "cant_get_downstate": 5,
+      "website": "https://thegundis.com/"
     },
     {
       "name": "Ghin Khao Eat Rice",
@@ -157,17 +311,29 @@
       "cuisine": "Thai (Isan)",
       "neighborhood": "Lakeview",
       "address": "3041 N Broadway, Chicago, IL 60657",
-      "lat": 41.9383, "lng": -87.6445,
-      "price": "$$", "price_avg": 28,
+      "lat": 41.9383,
+      "lng": -87.6445,
+      "price": "$$",
+      "price_avg": 28,
       "score": 91,
       "must_try": "Larb with toasted rice powder — max spice",
       "description": "Bib Gourmand Isan Thai. Not your pad thai shop. The chef doesn't dumb it down.",
       "rationale": "Regional Isan Thai most Americans have never tasted. The spice is REAL.",
-      "trails": ["fire-walk", "noodle-run"],
-      "tags": ["bib-gourmand", "thai-isan", "spicy"],
+      "trails": [
+        "fire-walk",
+        "noodle-run"
+      ],
+      "tags": [
+        "bib-gourmand",
+        "thai-isan",
+        "spicy"
+      ],
       "hours": "Wed-Mon 11:30am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 5, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 5,
+      "adventurousness": 3,
+      "cant_get_downstate": 4,
+      "website": "https://www.ghinkhaochicago.com/"
     },
     {
       "name": "MCCB (Mala Chinese BBQ)",
@@ -175,17 +341,30 @@
       "cuisine": "Szechuan",
       "neighborhood": "Chinatown",
       "address": "2400 S Wentworth Ave, Chicago, IL 60616",
-      "lat": 41.8497, "lng": -87.6317,
-      "price": "$$", "price_avg": 25,
+      "lat": 41.8497,
+      "lng": -87.6317,
+      "price": "$$",
+      "price_avg": 25,
       "score": 89,
       "must_try": "Whole fish in mala chili oil — the numbness is the point",
       "description": "Szechuan peppercorns will rewire your taste buds. Dry pot and BBQ skewers equally insane.",
       "rationale": "Your burn-it-down spice tolerance meets its match here.",
-      "trails": ["fire-walk", "by-hand"],
-      "tags": ["szechuan", "mala", "spicy", "chinatown"],
+      "trails": [
+        "fire-walk",
+        "by-hand"
+      ],
+      "tags": [
+        "szechuan",
+        "mala",
+        "spicy",
+        "chinatown"
+      ],
       "hours": "Daily 11am-10pm",
       "reservation": "Walk-in",
-      "spice_level": 5, "adventurousness": 4, "cant_get_downstate": 4
+      "spice_level": 5,
+      "adventurousness": 4,
+      "cant_get_downstate": 4,
+      "website": "https://www.mccbchicago.com/"
     },
     {
       "name": "Maman Zari",
@@ -193,17 +372,31 @@
       "cuisine": "Persian",
       "neighborhood": "Albany Park",
       "address": "4710 N Kedzie Ave, Chicago, IL 60625",
-      "lat": 41.9660, "lng": -87.7086,
-      "price": "$$$", "price_avg": 55,
+      "lat": 41.966,
+      "lng": -87.7086,
+      "price": "$$$",
+      "price_avg": 55,
       "score": 90,
       "must_try": "The saffron rice — you eat what Maman makes tonight",
       "description": "One of very few Persian tasting-menu restaurants in the country. 9 courses, family-run, intimate.",
       "rationale": "Chef's-pick ethos IS the format. Ultra-rare cuisine at a fraction of fine-dining.",
-      "trails": ["trust-the-chef", "weekend-warriors", "sweet-tooth"],
-      "tags": ["persian", "tasting-menu", "rare-cuisine", "weekend-only"],
+      "trails": [
+        "trust-the-chef",
+        "weekend-warriors",
+        "sweet-tooth"
+      ],
+      "tags": [
+        "persian",
+        "tasting-menu",
+        "rare-cuisine",
+        "weekend-only"
+      ],
       "hours": "Fri-Sun 5pm-10pm",
       "reservation": "Required (Eventbrite)",
-      "spice_level": 1, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 1,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://www.mamanzari.com/"
     },
     {
       "name": "San Soo Gab San",
@@ -211,17 +404,30 @@
       "cuisine": "Korean BBQ",
       "neighborhood": "Lincoln Square",
       "address": "5247 N Western Ave, Chicago, IL 60625",
-      "lat": 41.9770, "lng": -87.6885,
-      "price": "$$", "price_avg": 35,
+      "lat": 41.977,
+      "lng": -87.6885,
+      "price": "$$",
+      "price_avg": 35,
       "score": 88,
       "must_try": "Galbi over charcoal + wrap in lettuce with ssamjang",
       "description": "Old-school KBBQ with charcoal grills, 25+ banchan. BYOB. Cook your own.",
       "rationale": "Interactive dining that IS the activity. Your sister already loves KBBQ.",
-      "trails": ["by-hand", "fermentation"],
-      "tags": ["korean-bbq", "charcoal", "interactive", "byob"],
+      "trails": [
+        "by-hand",
+        "fermentation"
+      ],
+      "tags": [
+        "korean-bbq",
+        "charcoal",
+        "interactive",
+        "byob"
+      ],
       "hours": "Daily 11am-11pm",
       "reservation": "Walk-in",
-      "spice_level": 3, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 3,
+      "adventurousness": 3,
+      "cant_get_downstate": 4,
+      "website": "https://sansoogabsan.com/"
     },
     {
       "name": "Iron Age Korean Steakhouse",
@@ -229,17 +435,28 @@
       "cuisine": "Korean BBQ (AYCE)",
       "neighborhood": "Wicker Park",
       "address": "1265 N Milwaukee Ave, Chicago, IL 60622",
-      "lat": 41.9058, "lng": -87.6727,
-      "price": "$$", "price_avg": 29,
+      "lat": 41.9058,
+      "lng": -87.6727,
+      "price": "$$",
+      "price_avg": 29,
       "score": 86,
       "must_try": "All-you-can-eat — try the spicy chicken and unmarinated pork belly",
       "description": "AYCE Korean BBQ for ~$29. Tabletop grilling, full DIY experience.",
       "rationale": "She loved KBBQ — this is the unlimited version. Also has a Glenview location.",
-      "trails": ["by-hand"],
-      "tags": ["korean-bbq", "ayce", "wicker-park"],
+      "trails": [
+        "by-hand"
+      ],
+      "tags": [
+        "korean-bbq",
+        "ayce",
+        "wicker-park"
+      ],
       "hours": "Daily 11am-midnight",
       "reservation": "Walk-in",
-      "spice_level": 3, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 3,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://ironagekoreansteakhouse.com/"
     },
     {
       "name": "Hing Kee Restaurant",
@@ -247,17 +464,28 @@
       "cuisine": "Chinese (XLB)",
       "neighborhood": "Chinatown",
       "address": "2140 S Archer Ave, Chicago, IL 60616",
-      "lat": 41.8535, "lng": -87.6330,
-      "price": "$$", "price_avg": 20,
+      "lat": 41.8535,
+      "lng": -87.633,
+      "price": "$$",
+      "price_avg": 20,
       "score": 90,
       "must_try": "Crab and pork xiao long bao — best soup dumplings in Chicago",
       "description": "Best soup dumplings in the city. Three varieties, delicate wrappers, BYOB.",
       "rationale": "Dumpling Universe essential. The XLB are why Chinatown exists.",
-      "trails": ["dumpling-universe"],
-      "tags": ["xiao-long-bao", "chinatown", "byob"],
+      "trails": [
+        "dumpling-universe"
+      ],
+      "tags": [
+        "xiao-long-bao",
+        "chinatown",
+        "byob"
+      ],
       "hours": "Daily 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://www.hingkeechinatown.com/"
     },
     {
       "name": "QXY Dumplings",
@@ -265,17 +493,28 @@
       "cuisine": "Chinese (Artisan Dumplings)",
       "neighborhood": "Chinatown",
       "address": "2002 S Wentworth Ave #103, Chicago, IL 60616",
-      "lat": 41.8550, "lng": -87.6317,
-      "price": "$$", "price_avg": 20,
+      "lat": 41.855,
+      "lng": -87.6317,
+      "price": "$$",
+      "price_avg": 20,
       "score": 88,
       "must_try": "Lamb and coriander dumplings — hand-folded to order",
       "description": "Minimalist BYOB with creative fillings: lamb, crab roe, sea urchin. Every dumpling fresh.",
       "rationale": "The artisan counterpoint to Hing Kee. Creative flavors you won't find elsewhere.",
-      "trails": ["dumpling-universe"],
-      "tags": ["artisan-dumplings", "chinatown", "byob"],
+      "trails": [
+        "dumpling-universe"
+      ],
+      "tags": [
+        "artisan-dumplings",
+        "chinatown",
+        "byob"
+      ],
       "hours": "Thu-Tue 11am-8pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 3,
+      "cant_get_downstate": 4,
+      "website": "https://qxydumpling.com/"
     },
     {
       "name": "MingHin Cuisine",
@@ -283,17 +522,30 @@
       "cuisine": "Cantonese",
       "neighborhood": "Chinatown",
       "address": "2168 S Archer Ave, Chicago, IL 60616",
-      "lat": 41.8533, "lng": -87.6335,
-      "price": "$$", "price_avg": 30,
+      "lat": 41.8533,
+      "lng": -87.6335,
+      "price": "$$",
+      "price_avg": 30,
       "score": 87,
       "must_try": "Creamy egg yolk buns (liu sha bao) — lava center",
       "description": "Bib Gourmand Cantonese. Outstanding dim sum, open until midnight.",
       "rationale": "Late-night dim sum option and the egg yolk buns are a sweet-tooth essential.",
-      "trails": ["dumpling-universe", "sweet-tooth"],
-      "tags": ["bib-gourmand", "dim-sum", "cantonese", "late-night"],
+      "trails": [
+        "dumpling-universe",
+        "sweet-tooth"
+      ],
+      "tags": [
+        "bib-gourmand",
+        "dim-sum",
+        "cantonese",
+        "late-night"
+      ],
       "hours": "Daily 9am-midnight",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://www.minghincuisine.com/"
     },
     {
       "name": "Phoenix Restaurant",
@@ -301,17 +553,30 @@
       "cuisine": "Cantonese (Dim Sum)",
       "neighborhood": "Chinatown",
       "address": "2131 S Archer Ave, Chicago, IL 60616",
-      "lat": 41.8537, "lng": -87.6325,
-      "price": "$$", "price_avg": 22,
+      "lat": 41.8537,
+      "lng": -87.6325,
+      "price": "$$",
+      "price_avg": 22,
       "score": 86,
       "must_try": "Har gow from the cart + chicken feet if you dare",
       "description": "Classic cart-service dim sum — point at what looks good from rolling carts.",
       "rationale": "Cart-service is a dying art. Weekend mornings are the move.",
-      "trails": ["dumpling-universe", "by-hand", "weekend-warriors"],
-      "tags": ["dim-sum", "cart-service", "chinatown"],
+      "trails": [
+        "dumpling-universe",
+        "by-hand",
+        "weekend-warriors"
+      ],
+      "tags": [
+        "dim-sum",
+        "cart-service",
+        "chinatown"
+      ],
       "hours": "Daily 8am-3pm dim sum, 5pm-10pm dinner",
       "reservation": "Walk-in (arrive 10am weekends)",
-      "spice_level": 1, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 3,
+      "cant_get_downstate": 4,
+      "website": "https://www.phoenixrestaurantchicago.com/"
     },
     {
       "name": "Potsticker House",
@@ -319,17 +584,29 @@
       "cuisine": "Chinese (Potstickers)",
       "neighborhood": "Bridgeport",
       "address": "3139 S Halsted St, Chicago, IL 60608",
-      "lat": 41.8373, "lng": -87.6464,
-      "price": "$", "price_avg": 12,
+      "lat": 41.8373,
+      "lng": -87.6464,
+      "price": "$",
+      "price_avg": 12,
       "score": 84,
       "must_try": "Pan-fried pork potstickers — crispy bottom, juicy inside",
       "description": "Name says it all. Decades of perfecting one thing.",
       "rationale": "Dumpling Universe essential — the potsticker specialists.",
-      "trails": ["dumpling-universe", "street-level"],
-      "tags": ["potstickers", "bridgeport", "budget-gem"],
+      "trails": [
+        "dumpling-universe",
+        "street-level"
+      ],
+      "tags": [
+        "potstickers",
+        "bridgeport",
+        "budget-gem"
+      ],
       "hours": "Daily 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 1,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.potstickerhouse.com/"
     },
     {
       "name": "Kasia's Polish Deli",
@@ -337,17 +614,29 @@
       "cuisine": "Polish",
       "neighborhood": "Ukrainian Village",
       "address": "2101 W Chicago Ave, Chicago, IL 60622",
-      "lat": 41.8964, "lng": -87.6793,
-      "price": "$", "price_avg": 12,
+      "lat": 41.8964,
+      "lng": -87.6793,
+      "price": "$",
+      "price_avg": 12,
       "score": 84,
       "must_try": "Potato and cheese pierogi with fried onions",
       "description": "4x 'Best Pierogi in Chicago.' Hand-pinched, counter-service, grandmother's kitchen.",
       "rationale": "Chicago has the largest Polish population outside Warsaw. This is the distillation.",
-      "trails": ["dumpling-universe", "street-level"],
-      "tags": ["polish", "pierogi", "budget-gem"],
+      "trails": [
+        "dumpling-universe",
+        "street-level"
+      ],
+      "tags": [
+        "polish",
+        "pierogi",
+        "budget-gem"
+      ],
       "hours": "Mon-Sat 10am-7pm, Sun 10am-5pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.kasiasdeli.com/"
     },
     {
       "name": "Pierogi Kitchen",
@@ -355,17 +644,28 @@
       "cuisine": "Polish (Modern)",
       "neighborhood": "Wicker Park",
       "address": "1012 N Western Ave, Chicago, IL 60622",
-      "lat": 41.9004, "lng": -87.6876,
-      "price": "$$", "price_avg": 22,
+      "lat": 41.9004,
+      "lng": -87.6876,
+      "price": "$$",
+      "price_avg": 22,
       "score": 85,
       "must_try": "Smoked brisket pierogi — Polish meets Texas",
       "description": "Creative combos like smoked brisket alongside traditional potato-cheese. Polish folk art decor.",
       "rationale": "The modern counterpoint to Kasia's — creative fillings, same soul.",
-      "trails": ["dumpling-universe"],
-      "tags": ["pierogi", "creative-fillings", "wicker-park"],
+      "trails": [
+        "dumpling-universe"
+      ],
+      "tags": [
+        "pierogi",
+        "creative-fillings",
+        "wicker-park"
+      ],
       "hours": "Tue-Sun 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://www.pierogikitchenchicago.com/"
     },
     {
       "name": "Tryzub Ukrainian Kitchen",
@@ -373,17 +673,28 @@
       "cuisine": "Ukrainian",
       "neighborhood": "Ukrainian Village",
       "address": "2201 W Chicago Ave, Chicago, IL 60622",
-      "lat": 41.8964, "lng": -87.6815,
-      "price": "$$", "price_avg": 20,
+      "lat": 41.8964,
+      "lng": -87.6815,
+      "price": "$$",
+      "price_avg": 20,
       "score": 83,
       "must_try": "Varenyky party platter (16 dumplings, mixed fillings)",
       "description": "Handmade varenyky, borscht, kovbasa. The Ukrainian counterpart to pierogi.",
       "rationale": "Dumpling Universe essential — Ukrainian dumplings a block from Polish pierogi. Compare!",
-      "trails": ["dumpling-universe"],
-      "tags": ["ukrainian", "varenyky", "ukrainian-village"],
+      "trails": [
+        "dumpling-universe"
+      ],
+      "tags": [
+        "ukrainian",
+        "varenyky",
+        "ukrainian-village"
+      ],
       "hours": "Wed-Mon 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://tryzubchicago.com/"
     },
     {
       "name": "The Momo World",
@@ -391,17 +702,31 @@
       "cuisine": "Nepali",
       "neighborhood": "West Ridge (Devon Ave)",
       "address": "2552 W Devon Ave, Chicago, IL 60659",
-      "lat": 41.9977, "lng": -87.6930,
-      "price": "$", "price_avg": 12,
+      "lat": 41.9977,
+      "lng": -87.693,
+      "price": "$",
+      "price_avg": 12,
       "score": 85,
       "must_try": "Jhol momo — dumplings swimming in spiced tomato broth",
       "description": "Dedicated momo shop on Devon Ave. Steamed, fried, jhol (soup) styles.",
       "rationale": "Nepali momos complete the Dumpling Universe. Pair with Sabri Nihari on Devon.",
-      "trails": ["dumpling-universe", "street-level", "fire-walk"],
-      "tags": ["nepali", "momos", "devon-ave", "budget-gem"],
+      "trails": [
+        "dumpling-universe",
+        "street-level",
+        "fire-walk"
+      ],
+      "tags": [
+        "nepali",
+        "momos",
+        "devon-ave",
+        "budget-gem"
+      ],
       "hours": "Daily 11am-10pm",
       "reservation": "Walk-in",
-      "spice_level": 3, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 3,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://themomoworld.com/"
     },
     {
       "name": "Tortello",
@@ -409,17 +734,29 @@
       "cuisine": "Italian (Fresh Pasta)",
       "neighborhood": "Bucktown",
       "address": "1746 W Division St, Chicago, IL 60622",
-      "lat": 41.9032, "lng": -87.6733,
-      "price": "$$", "price_avg": 18,
+      "lat": 41.9032,
+      "lng": -87.6733,
+      "price": "$$",
+      "price_avg": 18,
       "score": 86,
       "must_try": "Whatever filled pasta they made today — it changes daily",
       "description": "Pastificio (pasta factory) with daily-changing fresh filled pastas. Counter-service, watch them make it.",
       "rationale": "Dumpling Universe: Italian edition. Fresh tortellini/ravioli made before your eyes.",
-      "trails": ["dumpling-universe", "trust-the-chef"],
-      "tags": ["fresh-pasta", "italian", "bucktown"],
+      "trails": [
+        "dumpling-universe",
+        "trust-the-chef"
+      ],
+      "tags": [
+        "fresh-pasta",
+        "italian",
+        "bucktown"
+      ],
       "hours": "Tue-Sun 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.tortellopasta.com/"
     },
     {
       "name": "Ramen Wasabi",
@@ -427,17 +764,30 @@
       "cuisine": "Japanese Ramen",
       "neighborhood": "Logan Square",
       "address": "2101 N Milwaukee Ave, Chicago, IL 60647",
-      "lat": 41.9195, "lng": -87.6940,
-      "price": "$$", "price_avg": 18,
+      "lat": 41.9195,
+      "lng": -87.694,
+      "price": "$$",
+      "price_avg": 18,
       "score": 87,
       "must_try": "Tonkotsu ramen — 45-hour pork bone broth",
       "description": "45-hour broth. Creamy, rich, deeply savory tonkotsu. Cash only.",
       "rationale": "Noodle Run essential. The broth time alone tells you this is serious.",
-      "trails": ["noodle-run", "street-level"],
-      "tags": ["ramen", "tonkotsu", "logan-square", "cash-only"],
+      "trails": [
+        "noodle-run",
+        "street-level"
+      ],
+      "tags": [
+        "ramen",
+        "tonkotsu",
+        "logan-square",
+        "cash-only"
+      ],
       "hours": "Tue-Sun 11:30am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 1,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "http://www.wasabichicago.com/"
     },
     {
       "name": "High Five Ramen",
@@ -445,17 +795,30 @@
       "cuisine": "Japanese Ramen",
       "neighborhood": "West Loop",
       "address": "112 N Green St, Chicago, IL 60607 (basement)",
-      "lat": 41.8837, "lng": -87.6491,
-      "price": "$$", "price_avg": 20,
+      "lat": 41.8837,
+      "lng": -87.6491,
+      "price": "$$",
+      "price_avg": 20,
       "score": 86,
       "must_try": "Hidden basement ramen — follow the signs downstairs",
       "description": "Hidden in a basement beneath Green Street Smoked Meats. The secret entrance is part of the fun.",
       "rationale": "Noodle Run + Curiosity Cabinet crossover. Secret ramen in a basement.",
-      "trails": ["noodle-run", "curiosity-cabinet"],
-      "tags": ["ramen", "hidden", "west-loop", "basement"],
+      "trails": [
+        "noodle-run",
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "ramen",
+        "hidden",
+        "west-loop",
+        "basement"
+      ],
       "hours": "Daily 11am-late",
       "reservation": "Walk-in",
-      "spice_level": 2, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 2,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://www.highfiveramen.com/"
     },
     {
       "name": "Slurp Slurp Noodles",
@@ -463,17 +826,30 @@
       "cuisine": "Chinese (Hand-Pulled)",
       "neighborhood": "Chinatown",
       "address": "2024 S Wentworth Ave, Chicago, IL 60616",
-      "lat": 41.8547, "lng": -87.6317,
-      "price": "$", "price_avg": 14,
+      "lat": 41.8547,
+      "lng": -87.6317,
+      "price": "$",
+      "price_avg": 14,
       "score": 88,
       "must_try": "Watch them pull the noodles, then eat the biang biang belt noodles",
       "description": "Hand-pulled noodles made in front of you. Wide belt noodles, cumin lamb, spicy oil.",
       "rationale": "Noodle Run essential. Watching noodles being pulled is half the experience.",
-      "trails": ["noodle-run", "fire-walk", "street-level"],
-      "tags": ["hand-pulled", "chinatown", "biang-biang"],
+      "trails": [
+        "noodle-run",
+        "fire-walk",
+        "street-level"
+      ],
+      "tags": [
+        "hand-pulled",
+        "chinatown",
+        "biang-biang"
+      ],
       "hours": "Daily 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 3, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 3,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://www.slurpslurpnoodles.com/"
     },
     {
       "name": "Pho 777",
@@ -481,17 +857,30 @@
       "cuisine": "Vietnamese",
       "neighborhood": "Uptown (Argyle)",
       "address": "1065 W Argyle St, Chicago, IL 60640",
-      "lat": 41.9733, "lng": -87.6586,
-      "price": "$", "price_avg": 12,
+      "lat": 41.9733,
+      "lng": -87.6586,
+      "price": "$",
+      "price_avg": 12,
       "score": 85,
       "must_try": "Pho dac biet (special combo) — 20+ varieties on the menu",
       "description": "20+ pho varieties on Argyle Street. Real bone broth depth, massive portions.",
       "rationale": "Noodle Run anchor on Argyle. Step off the Red Line into Little Saigon.",
-      "trails": ["noodle-run", "street-level"],
-      "tags": ["pho", "vietnamese", "argyle", "budget-gem"],
+      "trails": [
+        "noodle-run",
+        "street-level"
+      ],
+      "tags": [
+        "pho",
+        "vietnamese",
+        "argyle",
+        "budget-gem"
+      ],
       "hours": "Daily 9am-10pm",
       "reservation": "Walk-in",
-      "spice_level": 2, "adventurousness": 1, "cant_get_downstate": 4
+      "spice_level": 2,
+      "adventurousness": 1,
+      "cant_get_downstate": 4,
+      "website": "https://www.pho777chicago.com/"
     },
     {
       "name": "Okdol Hyeonok",
@@ -499,16 +888,28 @@
       "cuisine": "Korean (Naengmyeon)",
       "neighborhood": "Avondale",
       "address": "3340 N Milwaukee Ave, Chicago, IL 60641",
-      "lat": 41.9438, "lng": -87.7134,
-      "score": 87, "price": "$$", "price_avg": 18,
+      "lat": 41.9438,
+      "lng": -87.7134,
+      "score": 87,
+      "price": "$$",
+      "price_avg": 18,
       "must_try": "Mul naengmyeon — icy beef broth with buckwheat noodles",
       "description": "Bib Gourmand Pyongyang-style cold noodles. Buckwheat noodles in icy beef broth.",
       "rationale": "Noodle Run: Korean edition. Cold noodles that feel like nothing you've had before.",
-      "trails": ["noodle-run"],
-      "tags": ["bib-gourmand", "korean", "naengmyeon", "cold-noodles"],
+      "trails": [
+        "noodle-run"
+      ],
+      "tags": [
+        "bib-gourmand",
+        "korean",
+        "naengmyeon",
+        "cold-noodles"
+      ],
       "hours": "Daily 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 3,
+      "cant_get_downstate": 4
     },
     {
       "name": "Boonie's",
@@ -516,17 +917,28 @@
       "cuisine": "Filipino",
       "neighborhood": "Wicker Park",
       "address": "1601 W North Ave, Chicago, IL 60622",
-      "lat": 41.9108, "lng": -87.6697,
-      "price": "$$", "price_avg": 30,
+      "lat": 41.9108,
+      "lng": -87.6697,
+      "price": "$$",
+      "price_avg": 30,
       "score": 88,
       "must_try": "Sisig — crispy pork face hash, the gateway to Filipino food",
       "description": "Bib Gourmand next-gen Filipino. Heritage recipes with modern technique.",
       "rationale": "If Kasama is the splurge, Boonie's is the casual entry point.",
-      "trails": ["trust-the-chef"],
-      "tags": ["bib-gourmand", "filipino", "wicker-park"],
+      "trails": [
+        "trust-the-chef"
+      ],
+      "tags": [
+        "bib-gourmand",
+        "filipino",
+        "wicker-park"
+      ],
       "hours": "Tue-Sun 11am-9pm",
       "reservation": "Walk-in / Resy",
-      "spice_level": 2, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 2,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://www.booniefoods.com/"
     },
     {
       "name": "Thattu",
@@ -534,17 +946,30 @@
       "cuisine": "South Indian (Kerala)",
       "neighborhood": "West Ridge (Devon Ave)",
       "address": "2607 W Devon Ave, Chicago, IL 60659",
-      "lat": 41.9977, "lng": -87.6934,
-      "price": "$$", "price_avg": 22,
+      "lat": 41.9977,
+      "lng": -87.6934,
+      "price": "$$",
+      "price_avg": 22,
       "score": 88,
       "must_try": "Kerala beef fry — NYT-recognized for a reason",
       "description": "Kerala street food on Devon Ave. Dosas, appam, fish curry, beef fry.",
       "rationale": "Combine with Sabri Nihari + Momo World for a Devon Ave triple play.",
-      "trails": ["fire-walk", "by-hand"],
-      "tags": ["south-indian", "kerala", "devon-ave", "nyt-recognized"],
+      "trails": [
+        "fire-walk",
+        "by-hand"
+      ],
+      "tags": [
+        "south-indian",
+        "kerala",
+        "devon-ave",
+        "nyt-recognized"
+      ],
       "hours": "Thu-Mon 11am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 4, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 4,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://thattu.com/"
     },
     {
       "name": "Carnitas Uruapan",
@@ -552,17 +977,30 @@
       "cuisine": "Mexican (Carnitas)",
       "neighborhood": "Pilsen",
       "address": "1725 W 18th St, Chicago, IL 60608",
-      "lat": 41.8577, "lng": -87.6689,
-      "price": "$", "price_avg": 12,
+      "lat": 41.8577,
+      "lng": -87.6689,
+      "price": "$",
+      "price_avg": 12,
       "score": 87,
       "must_try": "Carnitas by the pound — copper cazo visible from the street",
       "description": "Cash-only Pilsen institution. Giant copper pot cooking pork all day.",
       "rationale": "The copper cazo street spectacle + legendary pork. Pair with Pilsen murals.",
-      "trails": ["street-level", "by-hand"],
-      "tags": ["mexican-regional", "carnitas", "cash-only", "pilsen"],
+      "trails": [
+        "street-level",
+        "by-hand"
+      ],
+      "tags": [
+        "mexican-regional",
+        "carnitas",
+        "cash-only",
+        "pilsen"
+      ],
       "hours": "Daily 7am-6pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://carnitasuruapanchi.com/"
     },
     {
       "name": "McDonald's Global Menu",
@@ -570,17 +1008,29 @@
       "cuisine": "International Fast Food",
       "neighborhood": "West Loop",
       "address": "110 N Carpenter St, Chicago, IL 60607",
-      "lat": 41.8841, "lng": -87.6526,
-      "price": "$", "price_avg": 12,
+      "lat": 41.8841,
+      "lng": -87.6526,
+      "price": "$",
+      "price_avg": 12,
       "score": 85,
       "must_try": "Whatever global items are rotating — Japan, Spain, India, Australia",
       "description": "THE global McDonald's at HQ. Standard menu PLUS rotating international items. 6,000 sq ft futuristic restaurant.",
       "rationale": "She thinks international McDonald's is cool — this IS that. Right off the Eisenhower.",
-      "trails": ["snack-attack"],
-      "tags": ["international", "global-menu", "west-loop", "hq"],
+      "trails": [
+        "snack-attack"
+      ],
+      "tags": [
+        "international",
+        "global-menu",
+        "west-loop",
+        "hq"
+      ],
       "hours": "Standard McDonald's hours",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 2, "cant_get_downstate": 5
+      "spice_level": 1,
+      "adventurousness": 2,
+      "cant_get_downstate": 5,
+      "website": "https://www.mcdonalds.com/us/en-us/location/il/chicago/1035-w-randolph/39148.html"
     },
     {
       "name": "Zmzm Sweets",
@@ -588,17 +1038,28 @@
       "cuisine": "Middle Eastern Sweets",
       "neighborhood": "Chicago Ridge",
       "address": "10511 S Harlem Ave, Chicago Ridge, IL 60415",
-      "lat": 41.7083, "lng": -87.8033,
-      "price": "$", "price_avg": 15,
+      "lat": 41.7083,
+      "lng": -87.8033,
+      "price": "$",
+      "price_avg": 15,
       "score": 91,
       "must_try": "Assorted baklava box + fresh kunafa (crispy cheese pastry)",
       "description": "Chicago's premier Middle Eastern/Turkish sweets. Baklava, kunafa, Arabic ice cream (booza).",
       "rationale": "She loved baklava — Zmzm is the mothership. Ships nationwide for a reason.",
-      "trails": ["sweet-tooth"],
-      "tags": ["baklava", "kunafa", "middle-eastern-sweets"],
+      "trails": [
+        "sweet-tooth"
+      ],
+      "tags": [
+        "baklava",
+        "kunafa",
+        "middle-eastern-sweets"
+      ],
       "hours": "Daily 10am-10pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 5,
+      "website": "https://zmzmsweetsusa.com/"
     },
     {
       "name": "Libanais Sweets",
@@ -606,17 +1067,29 @@
       "cuisine": "Lebanese Sweets",
       "neighborhood": "Lincolnwood (Devon Ave)",
       "address": "3300 W Devon Ave, Lincolnwood, IL 60712",
-      "lat": 41.9976, "lng": -87.7115,
-      "price": "$$", "price_avg": 15,
+      "lat": 41.9976,
+      "lng": -87.7115,
+      "price": "$$",
+      "price_avg": 15,
       "score": 88,
       "must_try": "Mixed baklava sampler — 80+ years of family recipes from Beirut",
       "description": "Family bakery starting in Beirut 1935. Every sweet baked in-house.",
       "rationale": "Sweet Tooth + Devon Ave day. Baklava as an art form, 3 generations.",
-      "trails": ["sweet-tooth"],
-      "tags": ["baklava", "lebanese", "devon-ave", "institution"],
+      "trails": [
+        "sweet-tooth"
+      ],
+      "tags": [
+        "baklava",
+        "lebanese",
+        "devon-ave",
+        "institution"
+      ],
       "hours": "Daily 9am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 4
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 4,
+      "website": "https://www.libanaischicago.com/"
     },
     {
       "name": "Do-Rite Donuts",
@@ -624,17 +1097,28 @@
       "cuisine": "Doughnuts",
       "neighborhood": "Loop / Streeterville",
       "address": "233 E Erie St, Chicago, IL 60611",
-      "lat": 41.8940, "lng": -87.6212,
-      "price": "$", "price_avg": 8,
+      "lat": 41.894,
+      "lng": -87.6212,
+      "price": "$",
+      "price_avg": 8,
       "score": 88,
       "must_try": "Pistachio-Meyer lemon glazed",
       "description": "Pillowy vanilla bean, cinnamon crunch, Michigan apple fritter. Also fried chicken.",
       "rationale": "Doughnut trail anchor downtown. Right off the Eisenhower.",
-      "trails": ["sweet-tooth"],
-      "tags": ["doughnuts", "loop", "on-the-route"],
+      "trails": [
+        "sweet-tooth"
+      ],
+      "tags": [
+        "doughnuts",
+        "loop",
+        "on-the-route"
+      ],
       "hours": "6:30am-3pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://www.doritedonuts.com/"
     },
     {
       "name": "Doughnut Vault",
@@ -642,17 +1126,29 @@
       "cuisine": "Doughnuts",
       "neighborhood": "River North / West Loop",
       "address": "401 N Franklin St, Chicago, IL 60654",
-      "lat": 41.8897, "lng": -87.6363,
-      "price": "$", "price_avg": 6,
+      "lat": 41.8897,
+      "lng": -87.6363,
+      "price": "$",
+      "price_avg": 6,
       "score": 89,
       "must_try": "Old fashioned buttermilk — sells out fast, go early",
       "description": "Small-batch, speakeasy-like vibe. Sells out daily. Old fashioned specialists.",
       "rationale": "The scarcity IS the experience. If you get there and they're gone, that's the story.",
-      "trails": ["sweet-tooth", "curiosity-cabinet"],
-      "tags": ["doughnuts", "small-batch", "sells-out"],
+      "trails": [
+        "sweet-tooth",
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "doughnuts",
+        "small-batch",
+        "sells-out"
+      ],
       "hours": "7:30am-1pm (or until sold out)",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.doughnutvault.com/"
     },
     {
       "name": "Old Fashioned Donuts",
@@ -660,17 +1156,30 @@
       "cuisine": "Doughnuts",
       "neighborhood": "Roseland (South Side)",
       "address": "11248 S Michigan Ave, Chicago, IL 60628",
-      "lat": 41.6884, "lng": -87.6225,
-      "price": "$", "price_avg": 5,
+      "lat": 41.6884,
+      "lng": -87.6225,
+      "price": "$",
+      "price_avg": 5,
       "score": 90,
       "must_try": "Apple fritter — #16 on Yelp's Top 100 US Donut Shops",
       "description": "Nearly 50 years. Every donut hand-cut, fried, and glazed from scratch. LEGEND.",
       "rationale": "The South Side pilgrimage. 45-min detour but worth a dedicated donut day.",
-      "trails": ["sweet-tooth", "street-level"],
-      "tags": ["doughnuts", "south-side-legend", "institution", "cash-heavy"],
+      "trails": [
+        "sweet-tooth",
+        "street-level"
+      ],
+      "tags": [
+        "doughnuts",
+        "south-side-legend",
+        "institution",
+        "cash-heavy"
+      ],
       "hours": "Mon-Sat 6am-6pm, CLOSED Sun",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.facebook.com/oldfashioneddonuts/"
     },
     {
       "name": "Stan's Donuts — Oak Brook",
@@ -678,17 +1187,28 @@
       "cuisine": "Doughnuts",
       "neighborhood": "Oak Brook",
       "address": "Oakbrook Center, Oak Brook, IL",
-      "lat": 41.8503, "lng": -87.9537,
-      "price": "$", "price_avg": 8,
+      "lat": 41.8503,
+      "lng": -87.9537,
+      "price": "$",
+      "price_avg": 8,
       "score": 85,
       "must_try": "Biscoff banana pocket",
       "description": "LA transplant, now Chicago institution. Inventive flavors.",
       "rationale": "RIGHT on I-88. Grab one on the way to or from the city.",
-      "trails": ["sweet-tooth"],
-      "tags": ["doughnuts", "on-the-route", "oak-brook"],
+      "trails": [
+        "sweet-tooth"
+      ],
+      "tags": [
+        "doughnuts",
+        "on-the-route",
+        "oak-brook"
+      ],
       "hours": "7am-8pm daily",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://www.stansdonuts.com/"
     },
     {
       "name": "Firecakes Donuts",
@@ -696,17 +1216,28 @@
       "cuisine": "Doughnuts",
       "neighborhood": "River North",
       "address": "68 W Hubbard St, Chicago, IL 60654",
-      "lat": 41.8899, "lng": -87.6319,
-      "price": "$", "price_avg": 8,
+      "lat": 41.8899,
+      "lng": -87.6319,
+      "price": "$",
+      "price_avg": 8,
       "score": 86,
       "must_try": "Ice cream donut sandwich (summer only)",
       "description": "About a dozen flavors. Famous for donut ice cream sandwiches in summer.",
       "rationale": "Sweet Tooth summer essential. River North, right off I-290.",
-      "trails": ["sweet-tooth"],
-      "tags": ["doughnuts", "ice-cream-sandwich", "river-north"],
+      "trails": [
+        "sweet-tooth"
+      ],
+      "tags": [
+        "doughnuts",
+        "ice-cream-sandwich",
+        "river-north"
+      ],
       "hours": "7am-4pm (or sold out)",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://firecakesdonuts.com/"
     },
     {
       "name": "Beacon Doughnuts",
@@ -714,17 +1245,29 @@
       "cuisine": "Doughnuts",
       "neighborhood": "Lincoln Park",
       "address": "810 W Armitage Ave, Chicago, IL 60614 (alley entrance)",
-      "lat": 41.9177, "lng": -87.6492,
-      "price": "$", "price_avg": 8,
+      "lat": 41.9177,
+      "lng": -87.6492,
+      "price": "$",
+      "price_avg": 8,
       "score": 84,
       "must_try": "Find the secret alley walk-up window — that's the must-try",
       "description": "Secret walk-up window in an alley. Small-batch artisanal. The hidden entrance IS the charm.",
       "rationale": "Curiosity Cabinet meets Sweet Tooth. A secret donut window in an alley.",
-      "trails": ["sweet-tooth", "curiosity-cabinet"],
-      "tags": ["doughnuts", "secret-entrance", "alley-window"],
+      "trails": [
+        "sweet-tooth",
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "doughnuts",
+        "secret-entrance",
+        "alley-window"
+      ],
       "hours": "Mon-Wed 7am-noon, Thu-Sun 7am-2pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://www.beacondoughnuts.com/"
     },
     {
       "name": "Pretty Cool Ice Cream",
@@ -732,17 +1275,29 @@
       "cuisine": "Ice Cream / Gelato",
       "neighborhood": "Logan Square",
       "address": "2353 N California Ave, Chicago, IL 60647",
-      "lat": 41.9236, "lng": -87.6977,
-      "price": "$", "price_avg": 8,
+      "lat": 41.9236,
+      "lng": -87.6977,
+      "price": "$",
+      "price_avg": 8,
       "score": 87,
       "must_try": "Whatever pastry chef Dana Cree invented this week",
       "description": "From award-winning pastry chef Dana Cree. Ice cream bars, sandwiches, pints with inventive flavors.",
       "rationale": "Trust-the-chef meets Sweet Tooth. A pastry genius making ice cream.",
-      "trails": ["sweet-tooth", "trust-the-chef"],
-      "tags": ["ice-cream", "chef-driven", "logan-square"],
+      "trails": [
+        "sweet-tooth",
+        "trust-the-chef"
+      ],
+      "tags": [
+        "ice-cream",
+        "chef-driven",
+        "logan-square"
+      ],
       "hours": "Wed-Sun 12pm-9pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://www.prettycoolicecream.com/"
     },
     {
       "name": "Sukhadia's Indian Sweets",
@@ -750,17 +1305,29 @@
       "cuisine": "Indian Sweets",
       "neighborhood": "West Ridge (Devon Ave)",
       "address": "2559 W Devon Ave, Chicago, IL 60659",
-      "lat": 41.9977, "lng": -87.6920,
-      "price": "$", "price_avg": 8,
+      "lat": 41.9977,
+      "lng": -87.692,
+      "price": "$",
+      "price_avg": 8,
       "score": 85,
       "must_try": "Fresh jalebi — hot, syrupy, crunchy spirals",
       "description": "Indian sweet shop on Devon. Fresh jalebi, gulab jamun, barfi, ladoo.",
       "rationale": "Sweet Tooth on Devon Ave. Hot jalebi from a sweet shop is a life-changing snack.",
-      "trails": ["sweet-tooth", "snack-attack"],
-      "tags": ["indian-sweets", "jalebi", "devon-ave"],
+      "trails": [
+        "sweet-tooth",
+        "snack-attack"
+      ],
+      "tags": [
+        "indian-sweets",
+        "jalebi",
+        "devon-ave"
+      ],
       "hours": "Daily 10am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 5,
+      "website": "https://www.sukhadiasweetschicago.com/"
     },
     {
       "name": "Paleteria Arco Iris",
@@ -768,17 +1335,29 @@
       "cuisine": "Mexican (Paletas/Churros)",
       "neighborhood": "Pilsen",
       "address": "Pilsen area, Chicago",
-      "lat": 41.8560, "lng": -87.6650,
-      "price": "$", "price_avg": 5,
+      "lat": 41.856,
+      "lng": -87.665,
+      "price": "$",
+      "price_avg": 5,
       "score": 83,
       "must_try": "Mango con chile paleta — spicy-sweet frozen perfection",
       "description": "Mexican popsicle shop. Mango con chile, tamarindo, coconut. Plus churros.",
       "rationale": "Sweet Tooth in Pilsen. Combine with murals and Carnitas Uruapan.",
-      "trails": ["sweet-tooth", "street-level"],
-      "tags": ["paletas", "mexican-ice-cream", "pilsen"],
+      "trails": [
+        "sweet-tooth",
+        "street-level"
+      ],
+      "tags": [
+        "paletas",
+        "mexican-ice-cream",
+        "pilsen"
+      ],
       "hours": "Daily 10am-8pm",
       "reservation": "Walk-in",
-      "spice_level": 2, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 2,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://paleteriarcoiris.com/"
     },
     {
       "name": "Naper Nuts & Sweets",
@@ -786,17 +1365,30 @@
       "cuisine": "Candy / Bulk Sweets",
       "neighborhood": "Naperville",
       "address": "10 W Jefferson Ave, Naperville, IL 60540",
-      "lat": 41.7710, "lng": -88.1499,
-      "price": "$", "price_avg": 10,
+      "lat": 41.771,
+      "lng": -88.1499,
+      "price": "$",
+      "price_avg": 10,
       "score": 84,
       "must_try": "Gourmet caramel corn + pick from 4,000 candy varieties",
       "description": "Since 1983. ~4,000 different candies. Nostalgic candy, chocolates, fudge, gummy everything.",
       "rationale": "Snack Attack + Sweet Tooth near Glen Ellyn. Downtown Naperville is charming too.",
-      "trails": ["sweet-tooth", "snack-attack"],
-      "tags": ["candy", "bulk-sweets", "naperville", "near-glen-ellyn"],
+      "trails": [
+        "sweet-tooth",
+        "snack-attack"
+      ],
+      "tags": [
+        "candy",
+        "bulk-sweets",
+        "naperville",
+        "near-glen-ellyn"
+      ],
       "hours": "Mon-Sat 10am-8pm, Sun 11am-6pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://napernutsandsweets.com/"
     },
     {
       "name": "Mitsuwa Marketplace",
@@ -804,17 +1396,30 @@
       "cuisine": "Japanese Grocery / Food Court",
       "neighborhood": "Arlington Heights",
       "address": "100 E Algonquin Rd, Arlington Heights, IL 60005",
-      "lat": 41.9627, "lng": -87.9780,
-      "price": "$", "price_avg": 15,
+      "lat": 41.9627,
+      "lng": -87.978,
+      "price": "$",
+      "price_avg": 15,
       "score": 91,
       "must_try": "Japanese snack aisle binge + Santouka ramen in food court",
       "description": "Massive Japanese grocery with food court. Rows of wild snacks, turtle-shaped pastries, ramen, takoyaki.",
       "rationale": "Snack Attack paradise. The snack aisle alone is a 30-min adventure. She will lose her mind.",
-      "trails": ["snack-attack", "noodle-run"],
-      "tags": ["japanese-grocery", "food-court", "snacks", "arlington-heights"],
+      "trails": [
+        "snack-attack",
+        "noodle-run"
+      ],
+      "tags": [
+        "japanese-grocery",
+        "food-court",
+        "snacks",
+        "arlington-heights"
+      ],
       "hours": "Daily 10am-8pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 1,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://mitsuwa.com/ch/"
     },
     {
       "name": "H Mart — Naperville",
@@ -822,17 +1427,30 @@
       "cuisine": "Korean Grocery / Food Court",
       "neighborhood": "Naperville",
       "address": "1295 E Ogden Ave, Naperville, IL 60563",
-      "lat": 41.7749, "lng": -88.1175,
-      "price": "$", "price_avg": 15,
+      "lat": 41.7749,
+      "lng": -88.1175,
+      "price": "$",
+      "price_avg": 15,
       "score": 89,
       "must_try": "The snack aisle + whatever the food court is serving today",
       "description": "Massive Korean/Asian supermarket. In-store food court, insane snack aisle. 15 min from Glen Ellyn.",
       "rationale": "She loved the Korean supermarket. This one is basically in your backyard.",
-      "trails": ["snack-attack", "fermentation"],
-      "tags": ["korean-grocery", "food-court", "naperville", "near-glen-ellyn"],
+      "trails": [
+        "snack-attack",
+        "fermentation"
+      ],
+      "tags": [
+        "korean-grocery",
+        "food-court",
+        "naperville",
+        "near-glen-ellyn"
+      ],
       "hours": "Daily 9am-10pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 1,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://www.hmart.com/"
     },
     {
       "name": "Joong Boo Market",
@@ -840,17 +1458,29 @@
       "cuisine": "Korean/Asian Grocery",
       "neighborhood": "Avondale",
       "address": "3333 N Kimball Ave, Chicago, IL 60618",
-      "lat": 41.9437, "lng": -87.7134,
-      "price": "$", "price_avg": 15,
+      "lat": 41.9437,
+      "lng": -87.7134,
+      "price": "$",
+      "price_avg": 15,
       "score": 88,
       "must_try": "Walk the whole kimchi aisle + $30 sashimi platter (Wed/Fri)",
       "description": "Chicago's premiere Asian grocery since 1992. Famous whole kimchi aisle. Korean food court inside.",
       "rationale": "Fermentation Station anchor. The kimchi aisle is a religious experience.",
-      "trails": ["snack-attack", "fermentation"],
-      "tags": ["korean-grocery", "kimchi-aisle", "food-court"],
+      "trails": [
+        "snack-attack",
+        "fermentation"
+      ],
+      "tags": [
+        "korean-grocery",
+        "kimchi-aisle",
+        "food-court"
+      ],
       "hours": "Daily 8am-9pm",
       "reservation": "Walk-in",
-      "spice_level": 2, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 2,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://joongboomarket.com/"
     },
     {
       "name": "Exotic Snack Guys",
@@ -858,17 +1488,28 @@
       "cuisine": "International Snacks",
       "neighborhood": "Logan Square",
       "address": "2787 N Milwaukee Ave, Chicago, IL 60647",
-      "lat": 41.9304, "lng": -87.7170,
-      "price": "$", "price_avg": 15,
+      "lat": 41.9304,
+      "lng": -87.717,
+      "price": "$",
+      "price_avg": 15,
       "score": 86,
       "must_try": "Build a mystery box from 40 countries",
       "description": "Snacks from ~40 countries. Rare chips, candies, beverages you've never seen.",
       "rationale": "She likes exotic snacks — this is the mothership. Mystery boxes available.",
-      "trails": ["snack-attack"],
-      "tags": ["exotic-snacks", "40-countries", "logan-square"],
+      "trails": [
+        "snack-attack"
+      ],
+      "tags": [
+        "exotic-snacks",
+        "40-countries",
+        "logan-square"
+      ],
       "hours": "Daily 11am-8pm (Fri-Sat 9pm)",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 3,
+      "cant_get_downstate": 4,
+      "website": "https://www.exoticsnackguys.com/"
     },
     {
       "name": "Candycopia",
@@ -876,17 +1517,30 @@
       "cuisine": "Swedish Pick-n-Mix Candy",
       "neighborhood": "Elmhurst / Oak Park",
       "address": "116 N York St, Elmhurst, IL 60126",
-      "lat": 41.8995, "lng": -87.9403,
-      "price": "$", "price_avg": 10,
+      "lat": 41.8995,
+      "lng": -87.9403,
+      "price": "$",
+      "price_avg": 10,
       "score": 83,
       "must_try": "Build your own Swedish candy bag — pick-n-mix bar",
       "description": "Swedish pick-and-mix candy bar plus international selections. Two locations on the corridor.",
       "rationale": "Snack Attack right on I-290. Perfect grab on the drive in or out.",
-      "trails": ["snack-attack", "sweet-tooth"],
-      "tags": ["candy", "swedish", "pick-n-mix", "on-the-route"],
+      "trails": [
+        "snack-attack",
+        "sweet-tooth"
+      ],
+      "tags": [
+        "candy",
+        "swedish",
+        "pick-n-mix",
+        "on-the-route"
+      ],
       "hours": "Mon-Sat 10am-8pm, Sun 11am-6pm",
       "reservation": "Walk-in",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://www.candycopia.com/"
     },
     {
       "name": "American Science & Surplus",
@@ -894,16 +1548,28 @@
       "subtype": "shop",
       "neighborhood": "West Chicago",
       "address": "33W361 Roosevelt Rd, West Chicago, IL 60185",
-      "lat": 41.8497, "lng": -88.2040,
+      "lat": 41.8497,
+      "lng": -88.204,
       "cost": "Free entry",
       "score": 92,
       "must_try": "Find the weirdest thing — beakers, robot kits, surplus army oddities",
       "description": "THE science bulk store. Surplus lab glass, educational toys, army surplus, electronics, things you didn't know existed. Employee-owned.",
       "rationale": "10 min from Glen Ellyn. A tinkerer's wonderland and curiosity cabinet rolled into one.",
-      "trails": ["curiosity-cabinet", "snack-attack"],
-      "tags": ["science-surplus", "oddities", "west-chicago", "near-glen-ellyn"],
+      "trails": [
+        "curiosity-cabinet",
+        "snack-attack"
+      ],
+      "tags": [
+        "science-surplus",
+        "oddities",
+        "west-chicago",
+        "near-glen-ellyn"
+      ],
       "hours": "Mon-Fri 11am-7pm, Sat 10am-6pm, Sun 11am-5pm",
-      "spice_level": 0, "adventurousness": 3, "cant_get_downstate": 4
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 4,
+      "website": "https://sciplus.com/"
     },
     {
       "name": "Game Show Battle Rooms",
@@ -911,16 +1577,27 @@
       "subtype": "experience",
       "neighborhood": "Lombard",
       "address": "2820 S Highland Ave, Lombard, IL",
-      "lat": 41.8444, "lng": -88.0076,
+      "lat": 41.8444,
+      "lng": -88.0076,
       "cost": "$30-40/person",
       "score": 89,
       "must_try": "The 1-hour 3-game-show competition — bring competitive energy",
       "description": "Immersive game show competition. Teams face off in 3 different shows over 1 hour.",
       "rationale": "5 min from Glen Ellyn! She likes the idea of game shows — this is literally it.",
-      "trails": ["weekend-warriors"],
-      "tags": ["game-show", "interactive", "lombard", "near-glen-ellyn"],
+      "trails": [
+        "weekend-warriors"
+      ],
+      "tags": [
+        "game-show",
+        "interactive",
+        "lombard",
+        "near-glen-ellyn"
+      ],
       "hours": "Check schedule (evening/weekend slots)",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://gameshowbattlerooms.com/chicago/"
     },
     {
       "name": "Woolly Mammoth Antiques & Oddities",
@@ -928,16 +1605,27 @@
       "subtype": "shop",
       "neighborhood": "Andersonville",
       "address": "1513 W Foster Ave, Chicago, IL 60640",
-      "lat": 41.9762, "lng": -87.6700,
+      "lat": 41.9762,
+      "lng": -87.67,
       "cost": "Free entry",
       "score": 93,
       "must_try": "Find the jar of old dentures, the insane asylum records, or a taxidermy piece",
       "description": "THE curiosity cabinet of Chicago. Taxidermy, skulls, medical artifacts, old books, creepy dolls. Taxidermy classes offered.",
       "rationale": "She likes old things and oddities — Woolly Mammoth IS this category. Middle East Bakery is NEXT DOOR for baklava.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["oddities", "taxidermy", "antiques", "andersonville"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "oddities",
+        "taxidermy",
+        "antiques",
+        "andersonville"
+      ],
       "hours": "Daily 12pm-5pm",
-      "spice_level": 0, "adventurousness": 4, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 4,
+      "cant_get_downstate": 5,
+      "website": "https://www.woollymammothchicago.com/"
     },
     {
       "name": "Middle East Bakery & Grocery",
@@ -945,17 +1633,30 @@
       "cuisine": "Middle Eastern",
       "neighborhood": "Andersonville",
       "address": "1512 W Foster Ave, Chicago, IL 60640",
-      "lat": 41.9762, "lng": -87.6693,
-      "price": "$", "price_avg": 8,
+      "lat": 41.9762,
+      "lng": -87.6693,
+      "price": "$",
+      "price_avg": 8,
       "score": 85,
       "must_try": "Brick oven pies + grab a baklava box",
       "description": "Since 1981. Brick oven pies, Middle Eastern grocery, fresh baklava. RIGHT NEXT TO Woolly Mammoth.",
       "rationale": "Curiosity Cabinet + Sweet Tooth combo. Oddities then baklava, 10 feet apart.",
-      "trails": ["sweet-tooth", "curiosity-cabinet"],
-      "tags": ["middle-eastern", "bakery", "andersonville", "institution"],
+      "trails": [
+        "sweet-tooth",
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "middle-eastern",
+        "bakery",
+        "andersonville",
+        "institution"
+      ],
       "hours": "Mon-Sat 9:30am-8pm, Sun 11am-6pm",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 1,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.middleeastbakeryandgrocery.com/"
     },
     {
       "name": "Salvage One",
@@ -963,16 +1664,27 @@
       "subtype": "shop",
       "neighborhood": "West Town",
       "address": "1840 W Hubbard St, Chicago, IL 60622",
-      "lat": 41.8900, "lng": -87.6743,
+      "lat": 41.89,
+      "lng": -87.6743,
       "cost": "Free entry",
       "score": 88,
       "must_try": "Get lost in 60,000 sq ft across 3 floors of architectural salvage",
       "description": "THREE FLOORS of architectural salvage, vintage furniture, oddities. 60,000 sq ft warehouse.",
       "rationale": "Old things and oddities at warehouse scale. Near the I-290 exit.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["salvage", "vintage", "warehouse", "west-town"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "salvage",
+        "vintage",
+        "warehouse",
+        "west-town"
+      ],
       "hours": "Thu 12-5pm, Fri-Sun 10am-5pm",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://salvageone.com/"
     },
     {
       "name": "Intuit Art Museum",
@@ -980,16 +1692,28 @@
       "subtype": "museum",
       "neighborhood": "West Town",
       "address": "756 N Milwaukee Ave, Chicago, IL 60642",
-      "lat": 41.8877, "lng": -87.6608,
+      "lat": 41.8877,
+      "lng": -87.6608,
       "cost": "Free-$15",
       "score": 90,
       "must_try": "Henry Darger's apartment recreation — a reclusive janitor's 15,000-page fantasy epic",
       "description": "Outsider art museum. Henry Darger was a janitor who secretly created a 15,000-page illustrated fantasy. His apartment is recreated here.",
       "rationale": "Curiosity Cabinet essential. Outsider art is the perfect blend of old, odd, and fascinating.",
-      "trails": ["curiosity-cabinet", "free-outside"],
-      "tags": ["outsider-art", "henry-darger", "museum", "west-town"],
+      "trails": [
+        "curiosity-cabinet",
+        "free-outside"
+      ],
+      "tags": [
+        "outsider-art",
+        "henry-darger",
+        "museum",
+        "west-town"
+      ],
       "hours": "Wed-Sat 11am-5pm, Sun 12-5pm",
-      "spice_level": 0, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://art.org/"
     },
     {
       "name": "International Museum of Surgical Science",
@@ -997,16 +1721,27 @@
       "subtype": "museum",
       "neighborhood": "Gold Coast",
       "address": "1524 N Lake Shore Dr, Chicago, IL 60610",
-      "lat": 41.9110, "lng": -87.6262,
+      "lat": 41.911,
+      "lng": -87.6262,
       "cost": "$20",
       "score": 91,
       "must_try": "The trepanning tools and the recreated 19th-century pharmacy",
       "description": "North America's ONLY surgery museum. In a lakefront mansion modeled after Versailles.",
       "rationale": "She likes oddities — a mansion full of surgical history is peak curiosity cabinet.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["offbeat-museum", "surgical", "mansion", "lakefront"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "offbeat-museum",
+        "surgical",
+        "mansion",
+        "lakefront"
+      ],
       "hours": "Wed-Sun 10am-4pm",
-      "spice_level": 0, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://imss.org/"
     },
     {
       "name": "Willowbrook Wildlife Center",
@@ -1014,16 +1749,28 @@
       "subtype": "nature",
       "neighborhood": "Glen Ellyn",
       "address": "525 S Park Blvd, Glen Ellyn, IL 60137",
-      "lat": 41.8602, "lng": -88.0678,
+      "lat": 41.8602,
+      "lng": -88.0678,
       "cost": "Free",
       "score": 90,
       "must_try": "Find the resident Great Horned Owls — her special interest",
       "description": "Wildlife rehab with resident owls and raptors. Free outdoor exhibits, nature trail. IN Glen Ellyn.",
       "rationale": "She has an owl special interest. There are owls HERE. In your base. Free.",
-      "trails": ["free-outside"],
-      "tags": ["owls", "wildlife", "free", "glen-ellyn", "home-base"],
+      "trails": [
+        "free-outside"
+      ],
+      "tags": [
+        "owls",
+        "wildlife",
+        "free",
+        "glen-ellyn",
+        "home-base"
+      ],
       "hours": "Daylight hours (check seasonal)",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://www.dupageforest.org/places-to-go/forest-preserves/willowbrook"
     },
     {
       "name": "Pilsen Mural Walk + National Museum of Mexican Art",
@@ -1031,16 +1778,27 @@
       "subtype": "art-walk",
       "neighborhood": "Pilsen",
       "address": "1852 W 19th St, Chicago, IL 60608",
-      "lat": 41.8557, "lng": -87.6720,
+      "lat": 41.8557,
+      "lng": -87.672,
       "cost": "Free",
       "score": 95,
       "must_try": "The museum is always free — don't skip it after the murals",
       "description": "50+ murals in Pilsen's streets + world-class free museum of Mexican art.",
       "rationale": "One of America's greatest outdoor galleries. Pair with Carnitas Uruapan or HaiSous.",
-      "trails": ["free-outside"],
-      "tags": ["murals", "free", "art", "cultural-immersion"],
+      "trails": [
+        "free-outside"
+      ],
+      "tags": [
+        "murals",
+        "free",
+        "art",
+        "cultural-immersion"
+      ],
       "hours": "Murals: daylight. Museum: Tue-Sun 10am-5pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 5,
+      "website": "https://nationalmuseumofmexicanart.org/"
     },
     {
       "name": "The 606 / Bloomingdale Trail",
@@ -1048,16 +1806,26 @@
       "subtype": "outdoor",
       "neighborhood": "Wicker Park / Bucktown / Logan Square",
       "address": "1801 N Ridgeway Ave, Chicago, IL 60647",
-      "lat": 41.9143, "lng": -87.7186,
+      "lat": 41.9143,
+      "lng": -87.7186,
       "cost": "Free",
       "score": 88,
       "must_try": "Walk west to east and drop into Wicker Park or Logan Square for food",
       "description": "2.7-mile elevated rail trail through 4 of Chicago's coolest neighborhoods.",
       "rationale": "Chicago's High Line but less crowded. Free, beautiful, great people-watching.",
-      "trails": ["free-outside"],
-      "tags": ["elevated-trail", "free", "neighborhoods"],
+      "trails": [
+        "free-outside"
+      ],
+      "tags": [
+        "elevated-trail",
+        "free",
+        "neighborhoods"
+      ],
       "hours": "Daily 6am-11pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 4
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 4,
+      "website": "https://www.the606.org/"
     },
     {
       "name": "Garfield Park Conservatory",
@@ -1065,16 +1833,27 @@
       "subtype": "nature",
       "neighborhood": "East Garfield Park",
       "address": "300 N Central Park Ave, Chicago, IL 60624",
-      "lat": 41.8863, "lng": -87.7166,
+      "lat": 41.8863,
+      "lng": -87.7166,
       "cost": "Free",
       "score": 86,
       "must_try": "The palm house is jaw-dropping — then the desert room",
       "description": "One of the nation's largest conservatories. Palm house, fern room, desert room. Free.",
       "rationale": "Free, gorgeous, and never on tourist lists. Great morning stop before the 606.",
-      "trails": ["free-outside"],
-      "tags": ["conservatory", "free", "nature", "hidden-gem"],
+      "trails": [
+        "free-outside"
+      ],
+      "tags": [
+        "conservatory",
+        "free",
+        "nature",
+        "hidden-gem"
+      ],
       "hours": "Wed-Sun 10am-5pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://garfieldconservatory.org/"
     },
     {
       "name": "Bronzeville Heritage Walk",
@@ -1082,16 +1861,26 @@
       "subtype": "art-walk",
       "neighborhood": "Bronzeville",
       "address": "3500 S King Dr, Chicago, IL 60653",
-      "lat": 41.8312, "lng": -87.6167,
+      "lat": 41.8312,
+      "lng": -87.6167,
       "cost": "Free",
       "score": 89,
       "must_try": "Victory Monument + DuSable Museum (nearby)",
       "description": "Historic 'Black Metropolis' — Great Migration, Louis Armstrong, birth of Chicago blues.",
       "rationale": "Deep American history in these streets. Pair with DuSable Museum.",
-      "trails": ["free-outside"],
-      "tags": ["history", "great-migration", "free"],
+      "trails": [
+        "free-outside"
+      ],
+      "tags": [
+        "history",
+        "great-migration",
+        "free"
+      ],
       "hours": "Anytime daylight; DuSable Museum Tue-Sun 10am-4pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 5,
+      "website": "https://blackmetropolis.org/"
     },
     {
       "name": "Chicago Riverwalk Kayaking",
@@ -1099,16 +1888,27 @@
       "subtype": "outdoor",
       "neighborhood": "Loop / River North",
       "address": "Chicago Riverwalk, Chicago, IL 60601",
-      "lat": 41.8868, "lng": -87.6217,
+      "lat": 41.8868,
+      "lng": -87.6217,
       "cost": "$55-75/person",
       "score": 93,
       "must_try": "Morning slot for calmer water — paddle past Marina City",
       "description": "Kayak through the skyscraper canyon. Guided architecture tours from the water.",
       "rationale": "Architecture from the water, but YOU'RE paddling. Active and unique.",
-      "trails": ["free-outside"],
-      "tags": ["kayaking", "architecture", "outdoor", "active"],
+      "trails": [
+        "free-outside"
+      ],
+      "tags": [
+        "kayaking",
+        "architecture",
+        "outdoor",
+        "active"
+      ],
       "hours": "May-Oct, tours from 9am",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 5
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 5,
+      "website": "https://urbankayaks.com/"
     },
     {
       "name": "Maxwell Street Market",
@@ -1116,16 +1916,29 @@
       "subtype": "market",
       "neighborhood": "University Village",
       "address": "800 S Desplaines St, Chicago, IL 60607",
-      "lat": 41.8718, "lng": -87.6441,
+      "lat": 41.8718,
+      "lng": -87.6441,
       "cost": "Free entry",
       "score": 90,
       "must_try": "Maxwell Street Polish sausage + elote from the street vendors",
       "description": "Sunday open-air market since 1912. Street food, vintage, produce.",
       "rationale": "Weekend Warriors essential. The food stalls alone are worth the trip.",
-      "trails": ["weekend-warriors", "street-level", "by-hand"],
-      "tags": ["market", "sunday-only", "street-food", "institution"],
+      "trails": [
+        "weekend-warriors",
+        "street-level",
+        "by-hand"
+      ],
+      "tags": [
+        "market",
+        "sunday-only",
+        "street-food",
+        "institution"
+      ],
       "hours": "Sundays 7am-3pm (seasonal)",
-      "spice_level": 1, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://www.chicago.gov/city/en/depts/dca/supp_info/maxwell_street_market.html"
     },
     {
       "name": "Eataly Chicago",
@@ -1133,17 +1946,30 @@
       "cuisine": "Italian (Food Hall)",
       "neighborhood": "River North",
       "address": "43 E Ohio St, Chicago, IL 60611",
-      "lat": 41.8926, "lng": -87.6277,
-      "price": "$$", "price_avg": 25,
+      "lat": 41.8926,
+      "lng": -87.6277,
+      "price": "$$",
+      "price_avg": 25,
       "score": 87,
       "must_try": "Graze: cheese sample + slice + gelato + Nutella bar",
       "description": "63,000 sq ft on TWO FLOORS. Largest Eataly in the US. Multiple restaurants, Nutella bar, gelato.",
       "rationale": "The ultimate grazing destination. Wander, sample, eat, repeat.",
-      "trails": ["sweet-tooth", "snack-attack"],
-      "tags": ["food-hall", "italian", "grazing", "river-north"],
+      "trails": [
+        "sweet-tooth",
+        "snack-attack"
+      ],
+      "tags": [
+        "food-hall",
+        "italian",
+        "grazing",
+        "river-north"
+      ],
       "hours": "Mon-Thu 7am-10pm, Fri-Sat 7am-11pm, Sun 7am-10pm",
       "reservation": "Walk-in (restaurants may need reservation)",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.eataly.com/us_en/stores/chicago"
     },
     {
       "name": "The Sterling Food Hall",
@@ -1151,17 +1977,29 @@
       "cuisine": "Food Hall (Multi-vendor)",
       "neighborhood": "The Loop",
       "address": "125 S Clark St, Chicago, IL 60603",
-      "lat": 41.8799, "lng": -87.6308,
-      "price": "$$", "price_avg": 15,
+      "lat": 41.8799,
+      "lng": -87.6308,
+      "price": "$$",
+      "price_avg": 15,
       "score": 84,
       "must_try": "Graze across 13 stalls — Fat Shallot sandwiches + LaShuk Middle Eastern",
       "description": "24,000 sq ft in a 1907 Burnham building. ~13 diverse stalls.",
       "rationale": "Bite-here-and-there meal in the Loop. Right off the Eisenhower.",
-      "trails": ["snack-attack"],
-      "tags": ["food-hall", "loop", "grazing", "on-the-route"],
+      "trails": [
+        "snack-attack"
+      ],
+      "tags": [
+        "food-hall",
+        "loop",
+        "grazing",
+        "on-the-route"
+      ],
       "hours": "Weekday lunch primarily",
       "reservation": "Walk-in",
-      "spice_level": 1, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 1,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://www.thesterlingfoodhall.com/"
     },
     {
       "name": "Glen Ellyn Antique District",
@@ -1169,16 +2007,28 @@
       "subtype": "shopping",
       "neighborhood": "Glen Ellyn",
       "address": "Main St, Glen Ellyn, IL 60137",
-      "lat": 41.8775, "lng": -88.0676,
+      "lat": 41.8775,
+      "lng": -88.0676,
       "cost": "Free entry",
       "score": 85,
       "must_try": "Walk the full cluster: Sign of the Whale, Gather & Collect, 30 North, Twice Is Nice",
       "description": "8+ walkable antique/vintage/thrift shops in downtown Glen Ellyn.",
       "rationale": "She likes old things — and these are at HOME BASE. Lazy afternoon browse.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["antiques", "vintage", "glen-ellyn", "home-base", "walkable"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "antiques",
+        "vintage",
+        "glen-ellyn",
+        "home-base",
+        "walkable"
+      ],
       "hours": "Most shops 10am-5pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://downtownglenellyn.com/home"
     },
     {
       "name": "Graham Crackers Comics",
@@ -1186,16 +2036,28 @@
       "subtype": "shop",
       "neighborhood": "Loop / Suburbs",
       "address": "77 E Madison St, Chicago, IL 60602",
-      "lat": 41.8816, "lng": -87.6257,
+      "lat": 41.8816,
+      "lng": -87.6257,
       "cost": "Free entry",
       "score": 82,
       "must_try": "Hunt for Krang figures and vintage TMNT collectibles",
       "description": "Largest comic chain in America. TMNT back issues, collectibles, new releases.",
       "rationale": "Krang special interest — this is where to hunt. Also has suburban locations near Glen Ellyn.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["comics", "tmnt", "krang", "loop", "collectibles"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "comics",
+        "tmnt",
+        "krang",
+        "loop",
+        "collectibles"
+      ],
       "hours": "Mon-Sat 10am-7pm, Sun 11am-5pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://www.grahamcrackers.com/"
     },
     {
       "name": "Weird Chicago Tour",
@@ -1203,16 +2065,27 @@
       "subtype": "tour",
       "neighborhood": "Downtown",
       "address": "600 N Clark St, Chicago, IL 60654",
-      "lat": 41.8920, "lng": -87.6312,
+      "lat": 41.892,
+      "lng": -87.6312,
       "cost": "$43+",
       "score": 85,
       "must_try": "The bus tour of haunted, bizarre, and macabre Chicago",
       "description": "Bus tour of Chicago's most haunted, bizarre, and macabre sites.",
       "rationale": "Curiosity Cabinet on wheels. Ghost stories, crime scenes, oddities.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["tour", "weird", "haunted", "macabre"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "tour",
+        "weird",
+        "haunted",
+        "macabre"
+      ],
       "hours": "Check schedule (evening tours)",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://www.weirdchicago.com/"
     },
     {
       "name": "Chicago Pedway Underground Tour",
@@ -1220,16 +2093,27 @@
       "subtype": "tour",
       "neighborhood": "The Loop",
       "address": "Loop area, Chicago",
-      "lat": 41.8819, "lng": -87.6278,
+      "lat": 41.8819,
+      "lng": -87.6278,
       "cost": "$25-35",
       "score": 84,
       "must_try": "The stained glass and underground swimming pool views",
       "description": "2-hour walking tour through Chicago's hidden underground passages.",
       "rationale": "Hidden passages under the Loop. Oddities meets architecture.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["underground", "hidden", "tour", "loop"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "underground",
+        "hidden",
+        "tour",
+        "loop"
+      ],
       "hours": "Check schedule",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://www.insidechicagowalkingtours.com/open-your-eyes-chicago-pedway-underground-tour"
     },
     {
       "name": "Reckless Records",
@@ -1237,16 +2121,27 @@
       "subtype": "shop",
       "neighborhood": "Wicker Park",
       "address": "1379 N Milwaukee Ave, Chicago, IL 60622",
-      "lat": 41.9081, "lng": -87.6741,
+      "lat": 41.9081,
+      "lng": -87.6741,
       "cost": "Free entry",
       "score": 83,
       "must_try": "Dig through the vinyl — Jack White has played in-store shows here",
       "description": "Chicago institution since 1988. Massive vinyl selection, staff picks wall.",
       "rationale": "Old things + oddities in record form. Wicker Park, combinable with the 606.",
-      "trails": ["curiosity-cabinet"],
-      "tags": ["vinyl", "records", "wicker-park", "institution"],
+      "trails": [
+        "curiosity-cabinet"
+      ],
+      "tags": [
+        "vinyl",
+        "records",
+        "wicker-park",
+        "institution"
+      ],
       "hours": "Daily 10am-7pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 3,
+      "website": "https://www.reckless.com/"
     },
     {
       "name": "Vargo Brothers Ferments",
@@ -1254,16 +2149,28 @@
       "cuisine": "Fermented Foods",
       "neighborhood": "Various (farmers markets)",
       "address": "Chicago farmers markets",
-      "lat": 41.8800, "lng": -87.6300,
-      "price": "$", "price_avg": 12,
+      "lat": 41.88,
+      "lng": -87.63,
+      "price": "$",
+      "price_avg": 12,
       "score": 83,
       "must_try": "Kimchi-kraut hybrid — Black-owned, artisan fermentation",
       "description": "Black-owned fermentation company. Kimchi, kraut, kombucha at farmers markets.",
       "rationale": "Fermentation Station essential. Find them at Green City Market or Logan Square market.",
-      "trails": ["fermentation"],
-      "tags": ["fermented", "kimchi", "kombucha", "farmers-market"],
+      "trails": [
+        "fermentation"
+      ],
+      "tags": [
+        "fermented",
+        "kimchi",
+        "kombucha",
+        "farmers-market"
+      ],
       "hours": "Market schedule",
-      "spice_level": 2, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 2,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://www.vargobrotherferments.com/"
     },
     {
       "name": "Beautiful Rind",
@@ -1271,16 +2178,28 @@
       "cuisine": "Cheese Shop",
       "neighborhood": "Roscoe Village",
       "address": "2211 W Roscoe St, Chicago, IL 60618",
-      "lat": 41.9434, "lng": -87.6833,
-      "price": "$$", "price_avg": 20,
+      "lat": 41.9434,
+      "lng": -87.6833,
+      "price": "$$",
+      "price_avg": 20,
       "score": 84,
       "must_try": "Ask for a tasting of the funkiest cheese they have",
       "description": "Artisan cheese shop with classes. Funky aged cheeses, cheese boards, expert staff.",
       "rationale": "Fermentation Station: cheese edition. Ask for the weirdest thing.",
-      "trails": ["fermentation"],
-      "tags": ["cheese", "artisan", "classes", "roscoe-village"],
+      "trails": [
+        "fermentation"
+      ],
+      "tags": [
+        "cheese",
+        "artisan",
+        "classes",
+        "roscoe-village"
+      ],
       "hours": "Tue-Sat 11am-7pm, Sun 11am-5pm",
-      "spice_level": 0, "adventurousness": 2, "cant_get_downstate": 3
+      "spice_level": 0,
+      "adventurousness": 2,
+      "cant_get_downstate": 3,
+      "website": "https://www.beautifulrind.com/"
     },
     {
       "name": "Lincoln Park Zoo",
@@ -1288,16 +2207,27 @@
       "subtype": "nature",
       "neighborhood": "Lincoln Park",
       "address": "2001 N Clark St, Chicago, IL 60614",
-      "lat": 41.9217, "lng": -87.6336,
+      "lat": 41.9217,
+      "lng": -87.6336,
       "cost": "Free",
       "score": 85,
       "must_try": "Birds of Prey area — eagles, owls, and vultures up close",
       "description": "Free zoo. Birds of Prey area has owls. Also great for a general visit.",
       "rationale": "Free + owls. Can't beat that combo.",
-      "trails": ["free-outside"],
-      "tags": ["zoo", "free", "owls", "lincoln-park"],
+      "trails": [
+        "free-outside"
+      ],
+      "tags": [
+        "zoo",
+        "free",
+        "owls",
+        "lincoln-park"
+      ],
       "hours": "Daily 10am-5pm",
-      "spice_level": 0, "adventurousness": 1, "cant_get_downstate": 2
+      "spice_level": 0,
+      "adventurousness": 1,
+      "cant_get_downstate": 2,
+      "website": "https://www.lpzoo.org/"
     },
     {
       "name": "Argyle Street / Little Saigon",
@@ -1305,16 +2235,27 @@
       "subtype": "neighborhood",
       "neighborhood": "Uptown",
       "address": "1050 W Argyle St, Chicago, IL 60640",
-      "lat": 41.9733, "lng": -87.6586,
+      "lat": 41.9733,
+      "lng": -87.6586,
       "cost": "Free (food separate)",
       "score": 87,
       "must_try": "Step off the Red Line at Argyle — the gateway arch marks the start",
       "description": "Vietnamese corridor. Pho shops, banh mi bakeries, tea houses, Asian groceries.",
       "rationale": "CTA accessible. Combine with Demera for an Ethiopian-Vietnamese double feature.",
-      "trails": ["snack-attack", "noodle-run"],
-      "tags": ["vietnamese", "neighborhood", "cta-accessible"],
+      "trails": [
+        "snack-attack",
+        "noodle-run"
+      ],
+      "tags": [
+        "vietnamese",
+        "neighborhood",
+        "cta-accessible"
+      ],
       "hours": "Most shops 10am-8pm",
-      "spice_level": 1, "adventurousness": 2, "cant_get_downstate": 4
+      "spice_level": 1,
+      "adventurousness": 2,
+      "cant_get_downstate": 4,
+      "website": "https://exploreuptown.org/asia-on-argyle/"
     },
     {
       "name": "Devon Avenue South Asian Corridor",
@@ -1322,16 +2263,29 @@
       "subtype": "neighborhood",
       "neighborhood": "West Ridge",
       "address": "2500 W Devon Ave, Chicago, IL 60659",
-      "lat": 41.9977, "lng": -87.6914,
+      "lat": 41.9977,
+      "lng": -87.6914,
       "cost": "Free (food separate)",
       "score": 94,
       "must_try": "Walk the full mile — sari shops, Bollywood music, sweet shop jalebi",
       "description": "A mile of Indian, Pakistani, Nepali shops, restaurants, and groceries. Sari shops, Bollywood music stores.",
       "rationale": "Full sensory immersion. Eat at Sabri Nihari + Thattu + Momo World + Sukhadia's sweets.",
-      "trails": ["snack-attack", "sweet-tooth", "by-hand", "fire-walk"],
-      "tags": ["south-asian", "cultural-immersion", "shopping"],
+      "trails": [
+        "snack-attack",
+        "sweet-tooth",
+        "by-hand",
+        "fire-walk"
+      ],
+      "tags": [
+        "south-asian",
+        "cultural-immersion",
+        "shopping"
+      ],
       "hours": "Most shops 10am-8pm",
-      "spice_level": 3, "adventurousness": 3, "cant_get_downstate": 5
+      "spice_level": 3,
+      "adventurousness": 3,
+      "cant_get_downstate": 5,
+      "website": "https://www.choosechicago.com/blog/neighborhoods-blog/devon-avenue/"
     }
   ]
 }
